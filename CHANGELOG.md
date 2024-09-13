@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/atxtechbro/siphon/compare/v1.0.1...v1.0.2) (2024-09-13)
+
+
+### Bug Fixes
+
+* **docs:** correct build status badge path in README to point to release workflow ([89b7c17](https://github.com/atxtechbro/siphon/commit/89b7c1786c62299c13ead3e4ae22f81668dc1bd3))
+
 ## [1.0.1](https://github.com/atxtechbro/siphon/compare/v1.0.0...v1.0.1) (2024-09-13)
 
 
