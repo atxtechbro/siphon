@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/atxtechbro/siphon/compare/v1.0.3...v1.0.4) (2024-09-13)
+
+
+### Bug Fixes
+
+* **docs:** update build status badge URL for GitHub Actions workflow ([bcd932c](https://github.com/atxtechbro/siphon/commit/bcd932cbd83bf48c0b4757049829a101f436716d))
+
 ## [1.0.3](https://github.com/atxtechbro/siphon/compare/v1.0.2...v1.0.3) (2024-09-13)
 
 
