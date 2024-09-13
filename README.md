@@ -3,9 +3,13 @@
 Efficiently extract, compress, and cache Git repository contexts for seamless integration with Large Language Models (LLMs).
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Version](https://img.shields.io/pypi/v/siphon-cli)
 ![Python Versions](https://img.shields.io/pypi/pyversions/siphon-cli)
+![Version](https://img.shields.io/pypi/v/siphon-cli)
+![Build Status](https://github.com/atxtechbro/siphon/workflows/CI/badge.svg)
+![Coverage](https://codecov.io/gh/atxtechbro/siphon/branch/main/graph/badge.svg)
 ![Downloads](https://img.shields.io/pypi/dm/siphon-cli)
+![Issues](https://img.shields.io/github/issues/atxtechbro/siphon)
+![PyPI](https://img.shields.io/pypi/v/siphon-cli.svg)
 
 ---
 
@@ -370,4 +374,5 @@ This project is licensed under the [MIT License](LICENSE).
 - **Project Link**: [https://github.com/atxtechbro/siphon](https://github.com/atxtechbro/siphon)
 
 ---
-"Trigger release" 
+
+"Trigger release"
