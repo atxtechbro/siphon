@@ -13,15 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.x"
-
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: "20.x"
+
+      - name: Install Node.js dependencies
+        run: npm install # This will install semantic-release and its plugins
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
 
       - name: Install Python dependencies
         run: pip install setuptools wheel twine
