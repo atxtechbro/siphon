@@ -1,5 +1,9 @@
 name: Release Python Package
 
+permissions:
+  contents: write # Allow the workflow to push tags and commit changes
+  issues: write # Allow the workflow to create issue comments
+
 on:
   push:
     branches:
