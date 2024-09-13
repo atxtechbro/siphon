@@ -16,7 +16,7 @@ def parse_arguments():
         description='Siphon - Efficiently extract and compress repository contents for LLMs.'
     )
     parser.add_argument(
-        'path', nargs='?', default='.', help='Path to the Git repository or a subdirectory within it'
+        'path', nargs='?', default='.', help='Path to the Git repository'
     )
     parser.add_argument(
         '-i', '--include', nargs='*', help='Include file patterns (e.g., *.py, src/)'
@@ -96,38 +96,31 @@ def interactive_selection(files):
             selected_files.append(file)
     return selected_files
 
-
 def estimate_tokens(text, tokenizer='gpt3'):
     # Simple token estimation based on word count
     words = text.split()
     tokens = len(words)  # Simplified estimation
     return tokens
 
-
 def main():
     args = parse_arguments()
     repo_path = os.path.abspath(args.path)
-
     if not os.path.exists(repo_path):
         print("Repository path does not exist.")
         sys.exit(1)
-
     try:
-        repo = git.Repo(repo_path, search_parent_directories=True)
-        repo_root = repo.git.rev_parse("--show-toplevel")
+        repo = git.Repo(repo_path)
     except git.InvalidGitRepositoryError:
         print("Not a valid Git repository.")
         sys.exit(1)
-
-    files = collect_files(args, repo_root, repo)
+    files = collect_files(args, repo_path, repo)
     if args.interactive:
         files = interactive_selection(files)
-
     temp_dir = tempfile.mkdtemp()
     try:
         collected_text = ''
         for file in files:
-            file_path = os.path.join(repo_root, file)
+            file_path = os.path.join(repo_path, file)
             # Ensure that the path is a file
             if not os.path.isfile(file_path):
                 print(f"Skipping {file}: Not a file")
@@ -148,20 +141,20 @@ def main():
         elif args.format == 'markdown':
             output_path = os.path.join(temp_dir, args.output)
             with open(output_path, 'w', encoding='utf-8') as f:
-                f.write(f"## Repository: {os.path.basename(repo_root)}\n")
+                f.write(f"## Repository: {os.path.basename(repo_path)}\n")
                 f.write(collected_text)
         elif args.format == 'tar':
             output_path = os.path.join(temp_dir, args.output)
+            # Create a temporary directory to store the files
             temp_repo_dir = os.path.join(temp_dir, 'repo_contents')
             os.makedirs(temp_repo_dir, exist_ok=True)
             for file in files:
-                src_file = os.path.join(repo_root, file)
+                src_file = os.path.join(repo_path, file)
                 dst_file = os.path.join(temp_repo_dir, file)
                 os.makedirs(os.path.dirname(dst_file), exist_ok=True)
                 shutil.copy2(src_file, dst_file)
             shutil.make_archive(output_path.replace('.tar', ''), 'tar', temp_repo_dir)
             output_path += '.tar'
-
         if args.clipboard:
             try:
                 if sys.platform == 'win32':
