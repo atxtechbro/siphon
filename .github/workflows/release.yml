@@ -18,12 +18,17 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
+
+      - name: Install Python dependencies
         run: pip install setuptools wheel twine
 
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.FINE_GRAINED_PAT }} # GitHub token for pushing tags
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }} # PyPI username stored in GitHub Secrets
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }} # PyPI password or API token stored in GitHub Secrets
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }} # PyPI username
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }} # PyPI password or API token
         run: npx semantic-release
