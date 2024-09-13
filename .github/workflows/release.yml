@@ -1,0 +1,29 @@
+name: Release Python Package
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: pip install setuptools wheel twine
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.FINE_GRAINED_PAT }} # GitHub token for pushing tags
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }} # PyPI username stored in GitHub Secrets
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }} # PyPI password or API token stored in GitHub Secrets
+        run: npx semantic-release
