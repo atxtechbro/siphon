@@ -14,7 +14,9 @@ Efficiently extract, compress, and cache Git repository contexts for seamless in
 </p>
 
 <p align="center">
-  <a href="https://www.fundedbyyc.com" target="_blank" class="yc-widget" style="display:inline-block;background-color:#FF6600;color:#FFFFFF;padding:15px 25px;text-decoration:none;border-radius:10px;font-weight:bold;font-family:Avenir, ui-sans-serif, system-ui, sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Funded by YC (Your Cents) 😉</a>
+  <a href="https://www.fundedbyyc.com" target="_blank">
+    <img src="https://img.shields.io/badge/Funded%20by%20YC-Your%20Cents-orange" alt="Funded by YC (Your Cents) 😉"/>
+  </a>
 </p>
 
 ---
