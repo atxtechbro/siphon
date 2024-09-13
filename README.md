@@ -11,6 +11,8 @@ Efficiently extract, compress, and cache Git repository contexts for seamless in
 ![Issues](https://img.shields.io/github/issues/atxtechbro/siphon)
 ![PyPI](https://img.shields.io/pypi/v/siphon-cli.svg)
 
+<a href="https://www.fundedbyyc.com" target="_blank" class="yc-widget" style="display:inline-block;background-color:#FF6600;color:#FFFFFF;padding:10px 20px;text-decoration:none;border-radius:5px;font-weight:bold;font-family:Avenir, ui-sans-serif, system-ui, sans-serif">Funded by YC (Your Cents) 😉</a>
+
 ---
 
 ## Table of Contents
