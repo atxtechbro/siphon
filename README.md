@@ -2,16 +2,20 @@
 
 Efficiently extract, compress, and cache Git repository contexts for seamless integration with Large Language Models (LLMs).
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
-![Python Versions](https://img.shields.io/pypi/pyversions/siphon-cli)
-![Version](https://img.shields.io/pypi/v/siphon-cli)
-![Build Status](https://github.com/atxtechbro/siphon/actions/workflows/release.yml/badge.svg)
-![Coverage](https://codecov.io/gh/atxtechbro/siphon/branch/main/graph/badge.svg)
-![Downloads](https://img.shields.io/pypi/dm/siphon-cli)
-![Issues](https://img.shields.io/github/issues/atxtechbro/siphon)
-![PyPI](https://img.shields.io/pypi/v/siphon-cli.svg)
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"/>
+  <img src="https://img.shields.io/pypi/pyversions/siphon-cli" alt="Python Versions"/>
+  <img src="https://img.shields.io/pypi/v/siphon-cli" alt="PyPI"/>
+  <img src="https://github.com/atxtechbro/siphon/actions/workflows/release.yml/badge.svg" alt="Build Status"/>
+  <img src="https://codecov.io/gh/atxtechbro/siphon/branch/main/graph/badge.svg" alt="Coverage"/>
+  <img src="https://img.shields.io/pypi/dm/siphon-cli" alt="Downloads"/>
+  <img src="https://img.shields.io/github/issues/atxtechbro/siphon" alt="Issues"/>
+  <img src="https://img.shields.io/pypi/v/siphon-cli.svg" alt="PyPI"/>
+</p>
 
-<a href="https://www.fundedbyyc.com" target="_blank" class="yc-widget" style="display:inline-block;background-color:#FF6600;color:#FFFFFF;padding:10px 20px;text-decoration:none;border-radius:5px;font-weight:bold;font-family:Avenir, ui-sans-serif, system-ui, sans-serif">Funded by YC (Your Cents) 😉</a>
+<p align="center">
+  <a href="https://www.fundedbyyc.com" target="_blank" class="yc-widget" style="display:inline-block;background-color:#FF6600;color:#FFFFFF;padding:15px 25px;text-decoration:none;border-radius:10px;font-weight:bold;font-family:Avenir, ui-sans-serif, system-ui, sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Funded by YC (Your Cents) 😉</a>
+</p>
 
 ---
 
