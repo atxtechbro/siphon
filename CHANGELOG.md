@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/atxtechbro/siphon/compare/v1.0.4...v1.0.5) (2024-09-13)
+
+
+### Bug Fixes
+
+* support subdirectory paths in Git repo detection ([64f891d](https://github.com/atxtechbro/siphon/commit/64f891dc1c0b71252997254b53481faffcc61820))
+
 ## [1.0.4](https://github.com/atxtechbro/siphon/compare/v1.0.3...v1.0.4) (2024-09-13)
 
 
