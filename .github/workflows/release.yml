@@ -31,7 +31,7 @@ jobs:
 
       - name: Run semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.FINE_GRAINED_PAT }} # GitHub token for pushing tags
+          GITHUB_TOKEN: ${{ secrets.CLASSIC_PACKAGES_TOKEN }} # GitHub token for pushing tags
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }} # PyPI username
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }} # PyPI password or API token
         run: npx semantic-release
