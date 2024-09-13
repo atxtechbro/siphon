@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/atxtechbro/siphon/compare/v1.0.5...v1.0.6) (2024-09-13)
+
+
+### Reverts
+
+* Revert "fix: support subdirectory paths in Git repo detection" ([96d2525](https://github.com/atxtechbro/siphon/commit/96d252578441d47b88599c35f2d1f494c9387945))
+
 ## [1.0.5](https://github.com/atxtechbro/siphon/compare/v1.0.4...v1.0.5) (2024-09-13)
 
 
