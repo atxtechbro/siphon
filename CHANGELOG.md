@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/atxtechbro/siphon/compare/v1.0.7...v1.1.0) (2024-09-14)
+
+
+### Features
+
+* improve -e (exclude) file pattern matching with fnmatch ([c6b923c](https://github.com/atxtechbro/siphon/commit/c6b923cb575ffe85bd2cbcd208425b0282fa02ae))
+
 ## [1.0.7](https://github.com/atxtechbro/siphon/compare/v1.0.6...v1.0.7) (2024-09-14)
 
 
