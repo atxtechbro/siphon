@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import fnmatch
 import os
 import shutil
 import subprocess
@@ -62,7 +63,7 @@ def collect_tracked_files(repo):
 
 def match_patterns(path, patterns):
     for pattern in patterns:
-        if Path(path).match(pattern):
+        if fnmatch.fnmatch(path, pattern):
             return True
     return False
 

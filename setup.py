@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='siphon-cli',
-    version='1.0.6',
+    version='1.1.0',
     author='Morgan Joyce',
     author_email='morganj2k@gmail.com',
     description='A tool to efficiently extract and compress Git repository contents for LLMs.',
