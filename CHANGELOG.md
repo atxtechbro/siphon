@@ -1,3 +1,15 @@
+## [1.0.7](https://github.com/atxtechbro/siphon/compare/v1.0.6...v1.0.7) (2024-09-14)
+
+
+### Bug Fixes
+
+* **docs:** update README to replace single quotes with double quotes for Windows compatibility ([fa40ac7](https://github.com/atxtechbro/siphon/commit/fa40ac73221fa724bb3a8238b6b65ee18b2d9dd2))
+
+
+### Reverts
+
+* change version from 1.0.6 to 1.0.5 ([ff77e0d](https://github.com/atxtechbro/siphon/commit/ff77e0d5ad2286ca066e7ba02aec0f756cbf6de1))
+
 ## [1.0.6](https://github.com/atxtechbro/siphon/compare/v1.0.5...v1.0.6) (2024-09-13)
 
 
