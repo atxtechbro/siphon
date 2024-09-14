@@ -74,13 +74,13 @@ This command extracts the repository content into `context.txt`.
 - **Include Specific File Types**:
 
   ```bash
-  si -i '*.py' -o python_files.txt
+  si -i "*.py" -o python_files.txt
   ```
 
 - **Exclude Directories**:
 
   ```bash
-  si -e 'tests/*' -o code_without_tests.txt
+  si -e "tests/*" -o code_without_tests.txt
   ```
 
 - **Interactive Mode**:
@@ -100,7 +100,7 @@ This command extracts the repository content into `context.txt`.
 ## Arguments
 
 - `path`: Path to the Git repository (default: current directory).
-- `-i`, `--include`: Include file patterns (e.g., `*.py`, `src/`).
+- `-i`, `--include`: Include file patterns (e.g., `.py`, `src/`).
 - `-e`, `--exclude`: Exclude file patterns (e.g., `tests/`, `*.md`).
 - `-o`, `--output`: Output file name (default: `output.txt`).
 - `-f`, `--format`: Output format (`text`, `tar`, `markdown`).
@@ -153,7 +153,3 @@ This project is licensed under the [MIT License](LICENSE).
 - **Email**: [morganj2k@gmail.com](mailto:morganj2k@gmail.com)
 - **GitHub**: [atxtechbro](https://github.com/atxtechbro)
 - **Project Link**: [https://github.com/atxtechbro/siphon](https://github.com/atxtechbro/siphon)
-
----
-
-"Trigger release"
