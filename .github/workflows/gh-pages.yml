@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install mkdocs mkdocs-material mike mkdocs-meta-descriptions-plugin
+          pip install mkdocs mkdocs-material mike mkdocs-meta-descriptions
 
       - name: Build Site
         run: mkdocs build --clean
