@@ -1,5 +1,5 @@
 site_name: Siphon Documentation
-site_url: https://siphon-cli.github.io/docs/
+site_url: https://docs.siphon-cli.com/
 theme:
   name: "material"
   logo: "images/logo.png"
@@ -32,9 +32,4 @@ nav:
 
 plugins:
   - search
-  - awesome-pages
-  - mike
-
-extra:
-  version:
-    current: '1.0'
+  - meta-descriptions
