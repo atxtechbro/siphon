@@ -20,6 +20,10 @@ jobs:
         with:
           python-version: "3.9"
 
+      - name: Clear pip cache
+        run: |
+          pip cache purge
+
       - name: Install Dependencies
         run: |
           pip install mkdocs mkdocs-material mike mkdocs-meta-descriptions-plugin
