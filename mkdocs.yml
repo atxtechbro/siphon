@@ -32,4 +32,4 @@ nav:
 
 plugins:
   - search
-  - meta-descriptions
+  - meta-descriptions-plugin
