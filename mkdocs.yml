@@ -1,0 +1,40 @@
+site_name: Siphon Documentation
+site_url: https://siphon-cli.github.io/docs/
+theme:
+  name: "material"
+  logo: "images/logo.png"
+  favicon: "images/favicon.ico"
+  palette:
+    primary: "indigo"
+    accent: "indigo"
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+extra:
+  social:
+    - icon: "fontawesome/brands/github"
+      link: "https://github.com/atxtechbro/siphon"
+  analytics:
+    google:
+      tracking_id: "G-XDRFBMJ4JF"
+      anonymize_ip: true
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Getting Started: getting-started.md
+  - Usage: usage.md
+  - Commands: commands.md
+  - Examples: examples.md
+  - API Reference: api-reference.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+  - License: license.md
+
+plugins:
+  - search
+  - awesome-pages
+  - mike
+
+extra:
+  version:
+    current: '1.0'
