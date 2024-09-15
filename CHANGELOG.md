@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0) (2024-09-15)
+
+
+### Bug Fixes
+
+* install missing mkdocs-meta-descriptions plugin and clean up cname comment ([b534518](https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b))
+
+
+### Features
+
+* **#4:** Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup ([38880b1](https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359)), closes [#4](https://github.com/atxtechbro/siphon/issues/4) [#4](https://github.com/atxtechbro/siphon/issues/4)
+* **docs:** initialize documentation structure for Siphon website ([7648cc1](https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f)), closes [#4](https://github.com/atxtechbro/siphon/issues/4)
+
 # [1.1.0](https://github.com/atxtechbro/siphon/compare/v1.0.7...v1.1.0) (2024-09-14)
 
 
