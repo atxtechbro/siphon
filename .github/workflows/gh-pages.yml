@@ -8,10 +8,12 @@ on:
       - "docs/**"
       - "mkdocs.yml"
 
+permissions:
+  contents: write
+
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
@@ -20,16 +22,12 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Clear pip cache
-        run: |
-          pip cache purge
-
       - name: Install Dependencies
         run: |
-          pip install mkdocs mkdocs-material mike mkdocs-meta-descriptions-plugin
+          pip install mkdocs mkdocs-material mkdocs-meta-descriptions-plugin
 
       - name: Build Site
-        run: mkdocs build --clean
+        run: mkdocs build --clean --verbose
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -37,7 +35,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           cname: "docs.siphon-cli.com"
-
-      - name: Deploy Version with Mike
-        run: |
-          mike deploy --push --update-aliases 1.0 latest
