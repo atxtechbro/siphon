@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install mkdocs mkdocs-material mike
+          pip install mkdocs mkdocs-material mike mkdocs-meta-descriptions-plugin
 
       - name: Build Site
         run: mkdocs build --clean
@@ -32,7 +32,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
-          cname: "docs.siphon-cli.com" # Use your custom domain here
+          cname: "docs.siphon-cli.com"
 
       - name: Deploy Version with Mike
         run: |
