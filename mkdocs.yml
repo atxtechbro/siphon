@@ -3,7 +3,7 @@ site_url: https://docs.siphon-cli.com/
 theme:
   name: "material"
   logo: "images/logo.png"
-  favicon: "images/favicon.ico"
+  favicon: "favicon.ico"
   palette:
     primary: "indigo"
     accent: "indigo"
