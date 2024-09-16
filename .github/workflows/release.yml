@@ -1,0 +1,42 @@
+name: Release Python Package
+
+permissions:
+  contents: write # Allow the workflow to push tags and commit changes
+  issues: write # Allow the workflow to create issue comments
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*"
+  workflow_dispatch: # Manual trigger
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
+
+      - name: Install Node.js dependencies
+        run: npm install # This will install semantic-release and its plugins
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Install Python dependencies
+        run: pip install setuptools wheel twine
+
+      - name: Run semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # GitHub token for pushing tags
+          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }} # PyPI username
+          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }} # PyPI password or API token
+        run: npx semantic-release
