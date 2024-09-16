@@ -5,4 +5,4 @@ description: "Record of all notable changes to Siphon."
 
 # Changelog
 
-[Full Changelog](../CHANGELOG.md)
+[Full Changelog](changelog.md)
