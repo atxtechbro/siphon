@@ -1,3 +1,4 @@
+# File: .github/workflows/deploy.yml
 name: Deploy Documentation
 
 on:
@@ -28,10 +29,3 @@ jobs:
 
       - name: Build Site
         run: mkdocs build --clean --verbose
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          cname: "docs.siphon-cli.com"
