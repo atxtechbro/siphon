@@ -2,8 +2,9 @@ site_name: Siphon Documentation
 site_url: https://docs.siphon-cli.com/
 theme:
   name: "material"
-  logo: "images/logo.png"
+  logo: "logo.png"
   favicon: "favicon.ico"
+  custom_dir: custom_theme/
   palette:
     primary: "indigo"
     accent: "indigo"
