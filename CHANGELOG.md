@@ -4,6 +4,23 @@
 ### Bug Fixes
 
 * install missing mkdocs-meta-descriptions plugin and clean up cname comment ([b534518](https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b))
+* move favicon.ico to docs directory for favicon loading experiment ([2b5726c](https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd))
+* update paths for logo and favicon in mkdocs.yml ([6380fad](https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091))
+
+
+### Features
+
+* **#4:** Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup ([38880b1](https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359)), closes [#4](https://github.com/atxtechbro/siphon/issues/4) [#4](https://github.com/atxtechbro/siphon/issues/4)
+* add favicon and logo images for branding ([fff3727](https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5)), closes [#5](https://github.com/atxtechbro/siphon/issues/5)
+* **docs:** initialize documentation structure for Siphon website ([7648cc1](https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f)), closes [#4](https://github.com/atxtechbro/siphon/issues/4)
+* **images:** add favicon.ico and logo.png ([bb47d10](https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c))
+
+# [1.2.0](https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0) (2024-09-16)
+
+
+### Bug Fixes
+
+* install missing mkdocs-meta-descriptions plugin and clean up cname comment ([b534518](https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b))
 
 
 ### Features
