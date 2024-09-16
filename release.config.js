@@ -1,3 +1,4 @@
+// release.config.js
 module.exports = {
   branches: ["main", "release"],
   repositoryUrl: "https://github.com/atxtechbro/siphon",
@@ -7,7 +8,14 @@ module.exports = {
     [
       "@semantic-release/changelog",
       {
-        changelogFile: "docs/changelog.md",
+        changelogFile: "CHANGELOG.tmp", // Write to a temporary file
+        changelogTitle: "", // Exclude changelogTitle to prevent duplication
+      },
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        prepareCmd: "node build-changelog.js", // Run script after changelog is generated
       },
     ],
     "@semantic-release/github",
