@@ -1,24 +1,36 @@
-name: Deploy Documentation
+name: Deploy MkDocs Site to GitHub Pages
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
-
-permissions:
-  contents: write
+      - main # Only run this on changes to main
+  workflow_dispatch: # Allow manual runs from the GitHub UI
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout the code
+        uses: actions/checkout@v3
         with:
-          submodules: true
-          fetch-depth: 0
+          fetch-depth: 0 # Fetch the entire history so gh-pages has a clean state
+          submodules: true # If you're using submodules, ensure this is set
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.x"
+
+      - name: Install MkDocs and dependencies
+        run: |
+          pip install mkdocs mkdocs-material mkdocs-meta-descriptions-plugin
+
+      - name: Build the MkDocs site
+        run: mkdocs build --clean --verbose
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site # Directory where MkDocs builds the static files
