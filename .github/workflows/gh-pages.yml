@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          submodules: true
           fetch-depth: 0
 
       - name: Set up Python
@@ -29,10 +30,12 @@ jobs:
       - name: Build Site
         run: mkdocs build --clean --verbose
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        # If you're changing the branch from main,
+        # also change the `main` in `refs/heads/main`
+        # below accordingly.
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          publish_branch: gh-pages
-          force_orphan: true
+          publish_dir: ./public
