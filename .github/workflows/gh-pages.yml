@@ -31,6 +31,9 @@ jobs:
       - name: Build the MkDocs site
         run: mkdocs build --clean --verbose
 
+      - name: Ensure CNAME exists
+        run: echo "docs.siphon-cli.com" > ./site/CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
