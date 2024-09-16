@@ -32,7 +32,7 @@ jobs:
           python-version: "3.x"
 
       - name: Install Python dependencies
-        run: pip install setuptools wheel twine
+        run: pip install setuptools wheel twine pycryptodome
 
       - name: Run semantic-release
         env:
