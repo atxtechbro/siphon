@@ -37,3 +37,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site # Directory where MkDocs builds the static files
           cname: docs.siphon-cli.com
+          force_orphan: true

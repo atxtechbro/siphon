@@ -14,5 +14,5 @@ description: "Comprehensive list of Siphon CLI commands and options."
 - `-e`, `--exclude`: Exclude file patterns.
 - `-o`, `--output`: Output file name.
 
-[Examples](examples.md)
+[View Examples](examples.md)
 ```
