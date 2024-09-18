@@ -1,10 +1,9 @@
-#### 3.1.4 `docs/usage.md`
-
-````markdown
 ---
 title: "Usage Instructions"
 description: "Detailed usage instructions for Siphon CLI."
 ---
+
+#### 3.1.4 `docs/usage.md`
 
 # Usage Instructions
 
@@ -13,4 +12,7 @@ description: "Detailed usage instructions for Siphon CLI."
 ```bash
 si [options] [path]
 ```
-````
+
+```
+
+```

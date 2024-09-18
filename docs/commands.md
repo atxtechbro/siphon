@@ -1,10 +1,9 @@
-#### 3.1.5 `docs/commands.md`
-
-```markdown
 ---
 title: "Siphon CLI Commands"
 description: "Comprehensive list of Siphon CLI commands and options."
 ---
+
+#### 3.1.5 `docs/commands.md`
 
 # Siphon CLI Commands
 
@@ -15,4 +14,7 @@ description: "Comprehensive list of Siphon CLI commands and options."
 - `-o`, `--output`: Output file name.
 
 [View Examples](examples.md)
+
+```
+
 ```
