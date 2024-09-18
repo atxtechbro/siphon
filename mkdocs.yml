@@ -29,7 +29,7 @@ nav:
   - API Reference: api-reference.md
   - Contributing: CONTRIBUTING.md
   - Changelog: changelog.md
-  - License: license.md
+  - License: LICENSE.md
 
 plugins:
   - search
