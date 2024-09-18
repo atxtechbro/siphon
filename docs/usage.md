@@ -12,7 +12,3 @@ description: "Detailed usage instructions for Siphon CLI."
 ```bash
 si [options] [path]
 ```
-
-```
-
-```

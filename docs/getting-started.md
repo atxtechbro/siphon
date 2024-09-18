@@ -12,7 +12,3 @@ After installing Siphon, navigate to your Git repository and run:
 ```bash
 si -o context.txt
 ```
-
-```
-
-```

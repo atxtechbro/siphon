@@ -14,7 +14,3 @@ description: "Comprehensive list of Siphon CLI commands and options."
 - `-o`, `--output`: Output file name.
 
 [View Examples](examples.md)
-
-```
-
-```
