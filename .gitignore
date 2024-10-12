@@ -1,3 +1,5 @@
 venv
 output.txt
 site
+node_modules
+*.pyc
