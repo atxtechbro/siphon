@@ -157,7 +157,7 @@ def main():
         if args.clipboard:
             try:
                 if sys.platform == 'win32':
-                    subprocess.run('clip', universal_newlines=True, input=collected_text)
+                    subprocess.run('clip', universal_newlines=True, input=collected_text.encode('utf-8'))
                 elif sys.platform == 'darwin':
                     subprocess.run('pbcopy', universal_newlines=True, input=collected_text)
                 else:
