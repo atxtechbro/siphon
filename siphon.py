@@ -157,11 +157,13 @@ def main():
         if args.clipboard:
             try:
                 if sys.platform == 'win32':
-                    subprocess.run('clip', universal_newlines=True, input=collected_text.encode('utf-8'))
+                    # Encode as UTF-8, then decode back to handle emojis correctly
+                    subprocess.run('clip', universal_newlines=True, input=collected_text.encode('utf-8').decode('utf-8'))
                 elif sys.platform == 'darwin':
                     subprocess.run('pbcopy', universal_newlines=True, input=collected_text)
                 else:
-                    subprocess.run('xclip', universal_newlines=True, input=collected_text)
+                    # Use xclip on Linux, ensure UTF-8 compatibility
+                    subprocess.run(['xclip', '-selection', 'clipboard'], input=collected_text, text=True)
             except Exception as e:
                 print(f"Failed to copy to clipboard: {e}")
         if args.stdout:
