@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/atxtechbro/siphon/compare/v1.3.1...v1.3.2) (2024-11-22)
+
+
+### Bug Fixes
+
+* **clipboard:** improve emoji and Unicode compatibility across platforms ([c478530](https://github.com/atxtechbro/siphon/commit/c478530f8741f5eda3c47282bae06504aff35b51))
+
 # [1.2.0](https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0) (2024-11-22)
 
 
