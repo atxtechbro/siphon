@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/atxtechbro/siphon/compare/v1.3.2...v1.3.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* **version:** remove extraneous quotes from VERSION file and sanitize dynamic version loading ([129987c](https://github.com/atxtechbro/siphon/commit/129987c31029a92bcda0774ace4fa933b1d9b78b))
+
 ## [1.3.2](https://github.com/atxtechbro/siphon/compare/v1.3.1...v1.3.2) (2024-11-22)
 
 
