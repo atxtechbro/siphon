@@ -7,16 +7,16 @@ module.exports = {
     [
       "@semantic-release/changelog",
       {
-        changelogFile: "docs/changelog.md", // Ensure Semantic Release updates the correct file
+        changelogFile: "docs/changelog.md", // Ensure changelog updates in docs
       },
     ],
     "@semantic-release/github",
     [
       "@semantic-release/git",
       {
-        assets: ["docs/changelog.md", "package.json"],
+        assets: ["docs/changelog.md", "VERSION"],
         message:
-          "chore(release): update changelog and bump version to ${nextRelease.version}",
+          "chore(release): update changelog and version to ${nextRelease.version}",
       },
     ],
   ],

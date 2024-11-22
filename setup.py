@@ -1,8 +1,19 @@
+import os
+
 from setuptools import find_packages, setup
+
+
+# Dynamically fetch the version from a version file or environment
+def get_version():
+    version_file = os.path.join(os.path.dirname(__file__), "VERSION")
+    if os.path.exists(version_file):
+        with open(version_file, "r") as f:
+            return f.read().strip()
+    return "0.0.0"  # Default fallback version
 
 setup(
     name='siphon-cli',
-    version='1.4.0',
+    version=get_version(),  # Fetch the dynamic version
     author='Morgan Joyce',
     author_email='morganj2k@gmail.com',
     description='A tool to efficiently extract and compress Git repository contents for LLMs.',
