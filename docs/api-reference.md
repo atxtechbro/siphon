@@ -12,3 +12,7 @@ _This section will be updated with auto-generated API documentation._
 ```
 
 ```
+
+## Note
+
+This section will be updated with future API documentation as the project evolves.
