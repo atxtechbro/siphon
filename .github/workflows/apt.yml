@@ -67,6 +67,9 @@ jobs:
           echo "" >> debian/rules
           echo "override_dh_auto_clean:" >> debian/rules
           echo -e "\trm -rf build dist *.egg-info" >> debian/rules
+          echo "" >> debian/rules
+          echo "override_dh_auto_configure:" >> debian/rules
+          echo -e "\t:" >> debian/rules
           chmod +x debian/rules
 
       - name: Build Debian Package
