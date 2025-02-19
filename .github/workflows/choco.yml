@@ -17,9 +17,9 @@ jobs:
         with:
           fetch-depth: 0  # Ensures all tags are available
 
-      - name: Extract Version from Git Tag
+      - name: Extract Version
         id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+        run: echo "VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
 
       - name: Install Chocolatey
         run: |
@@ -34,9 +34,11 @@ jobs:
 
       - name: Package Chocolatey Release
         run: choco pack
-    
-      - name: Debug GITHUB_REF
-        run: echo "GITHUB_REF=${GITHUB_REF}"
+
+      - name: Debug Version
+        run: |
+          echo "github.ref_name=${{ github.ref_name }}"
+          echo "VERSION=${{ env.VERSION }}"
 
       - name: Publish to Chocolatey
         run: choco push siphon.${{ env.VERSION }}.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
