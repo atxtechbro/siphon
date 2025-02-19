@@ -1,0 +1,45 @@
+name: Publish APT Package
+on:
+  release:
+    types: [published]
+
+jobs:
+  apt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures all tags are available
+
+      - name: Extract Version from Git Tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_ENV
+
+      - name: Install Debian Packaging Tools
+        run: sudo apt update && sudo apt install -y debhelper devscripts dpkg-dev
+
+      - name: Set Up GPG Signing Key
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --import
+          echo "allow-preset-passphrase" >> ~/.gnupg/gpg-agent.conf
+          echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --pinentry-mode loopback --export-secret-keys > /tmp/private-key.gpg
+          gpg --import /tmp/private-key.gpg
+          rm -f /tmp/private-key.gpg
+
+      - name: Build Debian Package
+        run: |
+          mkdir -p debian
+          echo "Building package for version $VERSION"
+          dpkg-buildpackage -us -uc
+
+      - name: Upload Package to PPA
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          scp ../siphon_${{ env.VERSION }}_amd64.deb username@ppa.launchpad.net:/incoming
