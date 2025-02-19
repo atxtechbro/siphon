@@ -27,6 +27,7 @@ jobs:
           GPG_PRIVATE_KEY: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
         run: |
+          export GPG_TTY=$(tty)
           echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --import
           echo "allow-preset-passphrase" >> ~/.gnupg/gpg-agent.conf
           echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --pinentry-mode loopback --export-secret-keys > /tmp/private-key.gpg
