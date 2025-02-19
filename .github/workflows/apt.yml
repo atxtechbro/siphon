@@ -22,19 +22,14 @@ jobs:
       - name: Install Debian Packaging Tools
         run: sudo apt update && sudo apt install -y debhelper devscripts dpkg-dev
 
-      - name: Set Up GPG Signing Key
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.APT_GPG_PRIVATE_KEY }}
-          GPG_PASSPHRASE: ${{ secrets.APT_GPG_PASSPHRASE }}
-        run: |
-          export GPG_TTY=$(tty)
-          gpgconf --kill gpg-agent
-          gpgconf --launch gpg-agent
-          echo "$GPG_PRIVATE_KEY" | base64 --decode | gpg --import
-          echo "allow-preset-passphrase" >> ~/.gnupg/gpg-agent.conf
-          echo "$GPG_PASSPHRASE" | gpg --batch --yes --passphrase-fd 0 --pinentry-mode loopback --export-secret-keys > /tmp/private-key.gpg
-          gpg --import /tmp/private-key.gpg
-          rm -f /tmp/private-key.gpg
+      - name: Import GPG Key for Signing
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+
+      - name: Verify GPG Key Import
+        run: gpg --list-secret-keys --keyid-format LONG
 
       - name: Build Debian Package
         run: |
