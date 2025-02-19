@@ -63,7 +63,7 @@ jobs:
           mkdir -p debian
           echo "#!/usr/bin/make -f" > debian/rules
           echo "%:" >> debian/rules
-          echo -e "\tpybuild \$@" >> debian/rules
+          echo -e "\tdh \$@" >> debian/rules
           chmod +x debian/rules
 
       - name: Build Debian Package
