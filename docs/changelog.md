@@ -5,6 +5,13 @@
 
 * **choco:** ensure siphon.exe is built before packaging ([#12](https://github.com/atxtechbro/siphon/issues/12)) ([0663266](https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7))
 
+## [1.3.4](https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.3.4) (2025-02-19)
+
+
+### Bug Fixes
+
+* **choco:** ensure siphon.exe is built before packaging ([#12](https://github.com/atxtechbro/siphon/issues/12)) ([0663266](https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7))
+
 ## [1.3.3](https://github.com/atxtechbro/siphon/compare/v1.3.2...v1.3.3) (2024-11-22)
 
 
