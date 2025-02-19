@@ -2,6 +2,9 @@ name: Publish APT Package
 on:
   release:
     types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   apt:

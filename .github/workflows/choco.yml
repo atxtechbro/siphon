@@ -2,6 +2,9 @@ name: Publish Chocolatey Package
 on:
   release:
     types: [published]
+  push:
+    tags:
+      - 'v*'
 
 jobs:
   chocolatey:
