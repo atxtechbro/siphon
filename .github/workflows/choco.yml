@@ -29,7 +29,8 @@ jobs:
           mv dist/siphon.exe .
 
       - name: Check if .nupkg file is created
-        run: dir /s /b *.nupkg
+        run: |
+          Get-ChildItem -Recurse -Filter *.nupkg
 
       - name: Package Chocolatey Release
         run: choco pack siphon.nuspec  # Explicitly specify the .nuspec file
