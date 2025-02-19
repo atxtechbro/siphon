@@ -5,6 +5,8 @@ on:
   push:
     tags:
       - 'v*'
+    branches:
+      main
 
 jobs:
   chocolatey:
@@ -32,6 +34,9 @@ jobs:
 
       - name: Package Chocolatey Release
         run: choco pack
+    
+      - name: Debug GITHUB_REF
+        run: echo "GITHUB_REF=${GITHUB_REF}"
 
       - name: Publish to Chocolatey
         run: choco push siphon.${{ env.VERSION }}.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
