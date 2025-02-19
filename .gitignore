@@ -3,3 +3,4 @@ output.txt
 site
 node_modules
 *.pyc
+fix.patch
