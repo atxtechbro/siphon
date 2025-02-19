@@ -57,8 +57,8 @@ jobs:
           Description: CLI for siphoning data from multiple sources.
           EOF
       
-      - name: Install Debian Packaging Tools
-        run: sudo apt update && sudo apt install -y build-essential debhelper devscripts dpkg-dev
+      - name: Install Debian Packaging Tools and Python3 Build Deps
+        run: sudo apt update && sudo apt install -y build-essential debhelper devscripts dpkg-dev python3-all
 
       - name: Generate Debian Rules File
         run: |
