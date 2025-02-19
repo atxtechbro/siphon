@@ -39,6 +39,23 @@ jobs:
 
       - name: Verify GPG Key Import
         run: gpg --list-secret-keys --keyid-format LONG
+      
+      - name: Generate Debian Control File
+        run: |
+          mkdir -p debian
+          cat <<EOF > debian/control
+          Source: siphon
+          Section: utils
+          Priority: optional
+          Maintainer: Morgan Joyce <morganj2k@gmail.com>
+          Standards-Version: 4.6.0
+          Build-Depends: debhelper-compat (=13)
+
+          Package: siphon
+          Architecture: amd64
+          Depends: python3, python3-pip
+          Description: CLI for siphoning data from multiple sources.
+          EOF
 
       - name: Build Debian Package
         run: |
