@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>siphon</id>
+    <version>1.3.3</version>
+    <title>Siphon CLI</title>
+    <authors>Morgan Joyce</authors>
+    <owners>atxtechbro</owners>
+    <licenseUrl>https://github.com/atxtechbro/siphon/blob/main/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/atxtechbro/siphon</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/atxtechbro/siphon/main/assets/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A lightweight CLI for siphoning data from multiple sources.</description>
+    <tags>cli automation data siphon</tags>
+    <dependencies>
+      <dependency id="python3" version="3.8" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="siphon.exe" target="tools" />
+  </files>
+</package>
