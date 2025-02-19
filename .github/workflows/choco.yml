@@ -20,6 +20,12 @@ jobs:
         run: |
           Set-ExecutionPolicy Bypass -Scope Process -Force
           iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    
+      - name: Build Executable (PyInstaller)
+        run: |
+          pip install pyinstaller
+          pyinstaller --onefile siphon.py --name siphon.exe
+          mv dist/siphon.exe .
 
       - name: Package Chocolatey Release
         run: choco pack
