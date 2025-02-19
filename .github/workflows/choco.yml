@@ -1,0 +1,28 @@
+name: Publish Chocolatey Package
+on:
+  release:
+    types: [published]
+
+jobs:
+  chocolatey:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures all tags are available
+
+      - name: Extract Version from Git Tag
+        id: get_version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Install Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+      - name: Package Chocolatey Release
+        run: choco pack
+
+      - name: Publish to Chocolatey
+        run: choco push siphon.${{ env.VERSION }}.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
