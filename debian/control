@@ -5,10 +5,11 @@ Maintainer: Morgan Joyce <morganj2k@gmail.com>
 Build-Depends:
     debhelper (>= 11),
     dh-python,
-    python3.12,
-    python3.12-dev,
+    python3-all,
+    python3-all-dev,
 Standards-Version: 4.6.0
 Homepage: https://docs.siphon-cli.com/
+X-Python3-Version: >= 3.6
 
 Package: siphon
 Architecture: all
