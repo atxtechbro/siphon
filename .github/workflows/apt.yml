@@ -26,15 +26,6 @@ jobs:
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
 
-      - name: Generate Debian Changelog
-        run: |
-          mkdir -p debian
-          echo "siphon (1.5.0) unstable; urgency=medium" > debian/changelog
-          echo "" >> debian/changelog
-          echo "  * Automated release 1.5.0" >> debian/changelog
-          echo "" >> debian/changelog
-          echo " -- Morgan Joyce <morganj2k@gmail.com>  $(date -R)" >> debian/changelog
-
       - name: Verify GPG Key Import
         run: gpg --list-secret-keys --keyid-format LONG
       
