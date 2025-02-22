@@ -34,11 +34,15 @@ jobs:
           mkdir -p debian
           echo "Building package for version 1.5.0"
           dpkg-buildpackage -us -uc
+      
+      - name: List Files
+        run: ls -l
 
       - name: Upload Package to PPA
         env:
           SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_KEY }}
         run: |
+          mkdir -p ~/.ssh  # Create the.ssh directory if it doesn't exist
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp ../siphon.1.5.0_amd64.deb username@ppa.launchpad.net:/incoming
+          scp../siphon.1.5.0_amd64.deb atxtechbro@ppa.launchpad.net:/incoming
