@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0) (2025-02-22)
+
+
+### Features
+
+* Enhance Chocolatey install script for robustness ([54d51d9](https://github.com/atxtechbro/siphon/commit/54d51d944bdaae903d923e162b3c33d86f90c131)), closes [#14](https://github.com/atxtechbro/siphon/issues/14)
+
 # [1.4.0](https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.4.0) (2025-02-19)
 
 
