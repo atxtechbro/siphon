@@ -8,15 +8,16 @@
     <owners>atxtechbro</owners>
     <licenseUrl>https://github.com/atxtechbro/siphon/blob/main/LICENSE</licenseUrl>
     <projectUrl>https://github.com/atxtechbro/siphon</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/atxtechbro/siphon/main/assets/icon.png</iconUrl>
+    <packageSourceUrl>https://github.com/atxtechbro/siphon</packageSourceUrl>
+    <iconUrl>https://raw.githubusercontent.com/atxtechbro/siphon/custom_theme/img/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A lightweight CLI for siphoning data from multiple sources.</description>
+    <summary>A lightweight command-line interface for extracting data from various sources.</summary>
+    <releaseNotes>https://github.com/atxtechbro/siphon/releases/tag/v1.3.4</releaseNotes>
     <tags>cli automation data siphon</tags>
     <dependencies>
-      <dependency id="python3" version="3.8" />
-    </dependencies>
+      <dependency id="python3" version="3.8" />  </dependencies>
   </metadata>
   <files>
-    <file src="siphon.exe" target="tools" />
-  </files>
+    <file src="tools\**" target="tools" />  <file src="siphon\**" target="siphon" />  </files>
 </package>
