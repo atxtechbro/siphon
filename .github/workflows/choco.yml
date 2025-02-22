@@ -36,4 +36,4 @@ jobs:
         run: choco pack siphon.nuspec  # Explicitly specify the .nuspec file
 
       - name: Publish to Chocolatey
-        run: choco push siphon.1.3.4.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
+        run: choco push siphon.1.5.0.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
