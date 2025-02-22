@@ -1,0 +1,12 @@
+Source: siphon
+Section: python
+Priority: optional
+Maintainer: Morgan Joyce <morganj2k@gmail.com>
+Build-Depends: debhelper (>= 11), python3.12
+Standards-Version: 4.6.0
+Homepage: https://docs.siphon-cli.com/
+
+Package: siphon
+Architecture: all
+Depends: python3, python3-pip
+Description: CLI for siphoning data from multiple sources.
