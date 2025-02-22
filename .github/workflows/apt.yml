@@ -34,15 +34,27 @@ jobs:
           mkdir -p debian
           echo "Building package for version 1.5.0"
           dpkg-buildpackage -us -uc
-      
-      - name: List Files
-        run: ls -l
+          if [! -f../siphon.1.5.0_amd64.deb ]; then
+            echo "Error:.deb file not found"
+            exit 1
+          fi
 
+          echo "Files in parent directory (after .deb check):"
+          ls -l
+
+          cd ..
+
+          echo "Current directory after 'cd ..' (parent directory):"
+          pwd
+          ls -l
+  
       - name: Upload Package to PPA
         env:
           SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_KEY }}
         run: |
-          mkdir -p ~/.ssh  # Create the.ssh directory if it doesn't exist
+          echo "current files after cd in prior step (should be same as output at end of prev step)"
+          ls -l
+          mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp../siphon.1.5.0_amd64.deb atxtechbro@ppa.launchpad.net:/incoming
+          scp siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
