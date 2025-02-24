@@ -55,4 +55,4 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp ../siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
+          scp -o StrictHostKeyChecking=no ../siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
