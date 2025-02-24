@@ -1,3 +1,18 @@
+# [1.5.0](https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0) (2025-02-24)
+
+
+### Bug Fixes
+
+* **choco:** Include LICENSE.txt and VERIFICATION.txt in package ([929d153](https://github.com/atxtechbro/siphon/commit/929d153e112b6a7dc3bd6c3eba02eb4a46205b43))
+* **debian:** Define Build Steps in debian/rules File ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([c1647b7](https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d))
+* **debian:** Install dh-python package in GitHub Actions workflow ([ee9fb39](https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb))
+* **debian:** Use pybuild for Debian builds ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([50d06e5](https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c))
+
+
+### Features
+
+* Enhance Chocolatey install script for robustness ([5cb11c5](https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738)), closes [#14](https://github.com/atxtechbro/siphon/issues/14)
+
 # [1.4.0](https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.4.0) (2025-02-19)
 
 
