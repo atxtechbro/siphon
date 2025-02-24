@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures all tags are available
+          fetch-depth: 0
 
       - name: Install Chocolatey
         run: |
@@ -26,14 +26,25 @@ jobs:
         run: |
           pip install pyinstaller
           pyinstaller --onefile siphon.py --name siphon.exe
-          mv dist/siphon.exe .
+          mv dist/siphon.exe
 
-      - name: Check if .nupkg file is created
+      - name: Create choco directory
+        run: New-Item -ItemType Directory -Path "choco"
+  
+      - name: Copy files to choco directory
         run: |
-          Get-ChildItem -Recurse -Filter *.nupkg
+          Copy-Item LICENSE.txt choco\
+          Copy-Item siphon.exe choco\
+
+      - name: Generate VERIFICATION.txt in choco directory
+        run: Get-FileHash -Algorithm SHA256 choco\siphon.exe | Format-List | Out-File -Encoding UTF8 choco\VERIFICATION.txt
 
       - name: Package Chocolatey Release
-        run: choco pack siphon.nuspec  # Explicitly specify the .nuspec file
+        run: |
+          cd choco
+          choco pack ../siphon.nuspec
 
       - name: Publish to Chocolatey
-        run: choco push siphon.1.5.0.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
+        run: |
+          cd choco
+          choco push siphon.1.5.0.nupkg --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}

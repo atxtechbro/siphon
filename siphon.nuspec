@@ -16,8 +16,12 @@
     <releaseNotes>https://github.com/atxtechbro/siphon/releases/tag/v1.5.0</releaseNotes>
     <tags>cli automation data siphon</tags>
     <dependencies>
-      <dependency id="python3" version="3.8" />  </dependencies>
+      <dependency id="python3" version="3.8" />
+    </dependencies>
   </metadata>
   <files>
-    <file src="*" target="" />  </files> 
+    <file src="choco\siphon.exe" target="" />  
+    <file src="choco\LICENSE.txt" target="" />  
+    <file src="choco\VERIFICATION.txt" target="" />  
+  </files> 
 </package>
