@@ -17,10 +17,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Chocolatey
-        run: |
-          Set-ExecutionPolicy Bypass -Scope Process -Force
-          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+      - name: Verify Chocolatey (Optional)
+        run: choco --version
 
       - name: Build Executable (PyInstaller)
         run: |
