@@ -52,9 +52,7 @@ jobs:
         env:
           SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_KEY }}
         run: |
-          echo "current files after cd in prior step (should be same as output at end of prev step)"
-          ls -l
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
+          scp ../siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
