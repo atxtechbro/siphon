@@ -49,10 +49,8 @@ jobs:
           ls -l
   
       - name: Upload Package to PPA
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.APT_SSH_KEY }}
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          rsync -v -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" ../siphon_1.5.0_all.deb atxtechbro@ppa.launchpad.net:/incoming
+          sudo apt-get install -y dput  # Install dput
+          dput ppa:atxtechbro/siphon-cli ../siphon_1.5.0_amd64.changes
+        env:
+          LAUNCHPAD_PPA: atxtechbro/siphon-cli
