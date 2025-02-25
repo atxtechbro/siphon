@@ -18,39 +18,29 @@ jobs:
           fetch-depth: 0  # Ensures all tags are available
 
       - name: Install Debian Packaging Tools
-        run: sudo apt-get update && sudo apt-get install -y build-essential debhelper dh-python python3-all python3-all-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput
 
       - name: Import GPG Key for Signing
-        uses: crazy-max/ghaction-import-gpg@v6
-        with:
-          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
-          passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+        run: echo "$GPG_PRIVATE_KEY" | gpg --import
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
       - name: Verify GPG Key Import
         run: gpg --list-secret-keys --keyid-format LONG
-      
+
       - name: Build Debian Package
         run: |
-          mkdir -p debian
-          echo "Building package for version 1.5.0"
-          dpkg-buildpackage -us -uc
-          if [! -f../siphon.1.5.0_amd64.deb ]; then
-            echo "Error:.deb file not found"
-            exit 1
-          fi
-
-          echo "Files in parent directory (after .deb check):"
-          ls -l
-
+          # Set the DEBSIGN_KEYID environment variable for signing.  Crucially *before* dpkg-buildpackage.
+          export DEBSIGN_KEYID=$(gpg --list-secret-keys --keyid-format LONG | awk '/sec/{print $2}' | cut -d'/' -f2 | head -n 1)
+          dpkg-buildpackage -us -uc -ui -k"$DEBSIGN_KEYID"  # Use -k to sign with the specified key.
           cd ..
-
-          echo "Current directory after 'cd ..' (parent directory):"
-          pwd
+          [ -f siphon_*.deb ] || ( echo "Error: .deb file not found!" && exit 1 )
           ls -l
-  
+
       - name: Upload Package to PPA
         run: |
-          sudo apt-get install -y dput  # Install dput
           dput ppa:atxtechbro/siphon-cli ../siphon_1.5.0_amd64.changes
         env:
           LAUNCHPAD_PPA: atxtechbro/siphon-cli
