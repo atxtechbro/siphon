@@ -19,6 +19,28 @@ jobs:
         Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
         iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+    - name: Verify Python and Pip are available
+      run: |
+        python --version
+        pip --version
+
+    - name: Build Executable (PyInstaller)
+      run: |
+        pip install pyinstaller
+        pyinstaller --onefile siphon.py --name siphon.exe
+        Move-Item dist/siphon.exe . # Changed 'mv' to 'Move-Item' for PowerShell
+
+    - name: Create choco directory
+      run: New-Item -ItemType Directory -Path "choco"
+
+    - name: Copy files to choco directory
+      run: |
+        Copy-Item LICENSE.txt choco\
+        Copy-Item siphon.exe choco\
+
+    - name: Generate VERIFICATION.txt in choco directory
+      run: Get-FileHash -Algorithm SHA256 choco\siphon.exe | Format-List | Out-File -Encoding UTF8 choco\VERIFICATION.txt
+
     - name: Attempt to Install Siphon Package
       shell: powershell # Important: Use PowerShell for redirection and choco command
       run: |
