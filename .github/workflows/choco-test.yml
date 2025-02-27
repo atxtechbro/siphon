@@ -11,51 +11,77 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Install Chocolatey
-      run: |
-        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+      - name: Install Chocolatey
+        run: |
+          Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+          iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
-    - name: Verify Python and Pip are available
-      run: |
-        python --version
-        pip --version
+      - name: Verify Python and Pip are available
+        run: |
+          python --version
+          pip --version
 
-    - name: Build Executable (PyInstaller)
-      run: |
-        pip install pyinstaller
-        pyinstaller --onefile siphon.py --name siphon.exe
-        Move-Item dist/siphon.exe . # Changed 'mv' to 'Move-Item' for PowerShell
+      - name: Build Executable (PyInstaller)
+        run: |
+          pip install pyinstaller
+          pyinstaller --onefile siphon.py --name siphon.exe
+          Move-Item dist/siphon.exe . # Changed 'mv' to 'Move-Item' for PowerShell
 
-    - name: Create choco directory
-      run: New-Item -ItemType Directory -Path "choco"
+      - name: Create choco directory
+        run: New-Item -ItemType Directory -Path "choco"
 
-    - name: Copy files to choco directory
-      run: |
-        Copy-Item LICENSE.txt choco\
-        Copy-Item siphon.exe choco\
+      - name: Copy files to choco directory
+        run: |
+          Copy-Item LICENSE.txt choco\
+          Copy-Item siphon.exe choco\
 
-    - name: Generate VERIFICATION.txt in choco directory
-      run: Get-FileHash -Algorithm SHA256 choco\siphon.exe | Format-List | Out-File -Encoding UTF8 choco\VERIFICATION.txt
+      - name: Generate VERIFICATION.txt in choco directory
+        run: Get-FileHash -Algorithm SHA256 choco\siphon.exe | Format-List | Out-File -Encoding UTF8 choco\VERIFICATION.txt
 
-    - name: Attempt to Install Siphon Package
-      shell: powershell # Important: Use PowerShell for redirection and choco command
-      run: |
-        choco install siphon -dv -s . --nocolor --log-file=choco-install.log
-        Get-Content choco-install.log
+      - name: Log Files Before Install # ADD THIS STEP
+        shell: powershell
+        run: |
+          Write-Host "--- Listing files in D:\a\siphon\siphon before choco install ---"
+          Get-ChildItem -Path "D:\a\siphon\siphon" -Recurse
 
-    - name: Check for Install Failure
-      if: ${{ failure() }}
-      shell: powershell
-      run: |
-        Write-Error "Chocolatey Package Installation Failed!"
-        Write-Host "Check the 'choco-install.log' file in the Actions output for details."
-        Get-Content choco-install.log # Display log in Actions output for easy viewing
+      - name: Log Environment Variables Before Install # ADD THIS STEP
+        shell: powershell
+        run: |
+          Write-Host "--- Environment Variables before choco install ---"
+          Get-ChildItem Env: | Format-Table -AutoSize
 
-    - name: Check for Success (if install didn't fail)
-      if: ${{ success() }}
-      shell: powershell
-      run: Write-Host "Chocolatey Package Installation Succeeded!"
+      - name: Echo Start of choco install # ADD THIS STEP
+        shell: powershell
+        run: Write-Host "--- Starting choco install siphon command ---"
+
+      - name: Attempt to Install Siphon Package # MODIFIED - Keep this step, but it's now surrounded by logging
+        shell: powershell # Important: Use PowerShell for redirection and choco command
+        run: |
+          choco install siphon -dv -s . --nocolor --log-file=choco-install.log
+          Get-Content choco-install.log
+
+      - name: Echo End of choco install # ADD THIS STEP
+        shell: powershell
+        run: Write-Host "--- Finished choco install siphon command ---"
+
+      - name: Log Environment Variables After Install # ADD THIS STEP
+        shell: powershell
+        run: |
+          Write-Host "--- Environment Variables after choco install ---"
+          Get-ChildItem Env: | Format-Table -AutoSize
+
+      - name: Check for Install Failure
+        if: ${{ failure() }}
+        shell: powershell
+        run: |
+          Write-Error "Chocolatey Package Installation Failed!"
+          Write-Host "Check the 'choco-install.log' file in the Actions output for details."
+          Get-Content choco-install.log # Display log in Actions output for easy viewing
+
+      - name: Check for Success (if install didn't fail)
+        if: ${{ success() }}
+        shell: powershell
+        run: Write-Host "Chocolatey Package Installation Succeeded!"
