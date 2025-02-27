@@ -1,0 +1,39 @@
+name: Chocolatey Package Test
+
+on:
+  push:
+    branches: [ main ] # Or your main branch name
+  pull_request:
+    branches: [ main ] # Or your main branch name
+
+jobs:
+  test-choco-install:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Chocolatey
+      run: |
+        Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
+        iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+    - name: Attempt to Install Siphon Package
+      shell: powershell # Important: Use PowerShell for redirection and choco command
+      run: |
+        choco install siphon -dv -s . --nocolor --log-file=choco-install.log
+        Get-Content choco-install.log
+
+    - name: Check for Install Failure
+      if: ${{ failure() }}
+      shell: powershell
+      run: |
+        Write-Error "Chocolatey Package Installation Failed!"
+        Write-Host "Check the 'choco-install.log' file in the Actions output for details."
+        Get-Content choco-install.log # Display log in Actions output for easy viewing
+
+    - name: Check for Success (if install didn't fail)
+      if: ${{ success() }}
+      shell: powershell
+      run: Write-Host "Chocolatey Package Installation Succeeded!"
