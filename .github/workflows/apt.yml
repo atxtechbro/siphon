@@ -39,6 +39,6 @@ jobs:
 
       - name: Upload Package to PPA
         run: |
-          dput ppa:atxtechbro/siphon-cli ../siphon_1.5.0_amd64.changes
+          dput -d ppa:atxtechbro/siphon-cli ../siphon_1.5.0_amd64.changes
         env:
           LAUNCHPAD_PPA: atxtechbro/siphon-cli
