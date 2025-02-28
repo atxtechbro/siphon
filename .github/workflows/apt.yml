@@ -15,30 +15,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures all tags are available
+          fetch-depth: 0
 
       - name: Install Debian Packaging Tools
         run: |
           sudo apt-get update
           sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput dh-python python3-all-dev
 
-      - name: Import GPG Key for Signing
-        run: echo "${{ secrets.APT_GPG_PRIVATE_KEY }}" | gpg --import
-
-      - name: Verify GPG Key Import
-        run: gpg --list-secret-keys --keyid-format LONG
-
-      - name: Build Debian Package
+      - name: Create Tarball
         run: |
-          # Set the DEBSIGN_KEYID environment variable for signing.  Crucially *before* dpkg-buildpackage.
-          export DEBSIGN_KEYID=$(gpg --list-secret-keys --keyid-format LONG | awk '/sec/{print $2}' | cut -d'/' -f2 | head -n 1)
-          dpkg-buildpackage -us -uc -ui -k"$DEBSIGN_KEYID"  # Use -k to sign with the specified key.
-          cd ..
-          [ -f siphon_*.deb ] || ( echo "Error: .deb file not found!" && exit 1 )
-          ls -l
+          VERSION=1.5.0
+          tar -czvf siphon_${VERSION}.tar.gz .
 
-      - name: Upload Package to PPA
-        run: |
-          dput -d ppa:atxtechbro/siphon-cli ../siphon_1.5.0_amd64.changes
-        env:
-          LAUNCHPAD_PPA: atxtechbro/siphon-cli
+      - name: Publish to PPA
+        uses: yuezk/publish-ppa-package@v2
+        with:
+          repository: "atxtechbro/siphon-cli"
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+          tarball: siphon_*.tar.gz
+          deb_email: "morganj2k@gmail.com"
+          deb_fullname: "Morgan Joyce"
+          debian_dir: debian
