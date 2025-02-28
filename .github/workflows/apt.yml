@@ -25,7 +25,8 @@ jobs:
       - name: Create Tarball
         run: |
           VERSION=1.5.0
-          tar -czvf siphon_${VERSION}.tar.gz .
+          mkdir artefacts
+          tar -czvf artefacts/siphon_${VERSION}.tar.gz --exclude=.git .
 
       - name: Publish to PPA
         uses: yuezk/publish-ppa-package@v2
