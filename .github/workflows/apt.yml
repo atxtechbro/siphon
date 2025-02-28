@@ -20,7 +20,7 @@ jobs:
       - name: Install Debian Packaging Tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput
+          sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput dh-python python3-all-dev
 
       - name: Import GPG Key for Signing
         run: echo "${{ secrets.APT_GPG_PRIVATE_KEY }}" | gpg --import
