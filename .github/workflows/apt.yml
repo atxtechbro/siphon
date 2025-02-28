@@ -23,9 +23,7 @@ jobs:
           sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput
 
       - name: Import GPG Key for Signing
-        run: echo "$GPG_PRIVATE_KEY" | gpg --import
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        run: echo "${{ secrets.APT_GPG_PRIVATE_KEY }}" | gpg --import
 
       - name: Verify GPG Key Import
         run: gpg --list-secret-keys --keyid-format LONG
