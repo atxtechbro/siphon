@@ -27,8 +27,8 @@ jobs:
 
       - name: Create Tarball
         run: |
-          mkdir artefacts
-          tar -czvf artefacts/siphon_${{ env.VERSION }}.tar.gz --exclude=.git .
+          mkdir artifacts
+          tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz --exclude=.git .
 
       - name: Publish to PPA
         uses: yuezk/publish-ppa-package@v2
@@ -36,7 +36,7 @@ jobs:
           repository: "atxtechbro/siphon-cli"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-          tarball: siphon_${{ env.VERSION }}.tar.gz
+          tarball: artifacts/siphon_${{ env.VERSION }}.tar.gz
           deb_email: "morganj2k@gmail.com"
           deb_fullname: "Morgan Joyce"
           debian_dir: debian
