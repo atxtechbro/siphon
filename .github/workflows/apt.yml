@@ -29,6 +29,12 @@ jobs:
         run: |
           mkdir artifacts
           tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz --exclude=.git .
+    
+      - name: Upload Tarball Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: tarball-artifact
+          path: artifacts/siphon_${{ env.VERSION }}.tar.gz
 
       - name: Publish to PPA
         uses: yuezk/publish-ppa-package@v2
