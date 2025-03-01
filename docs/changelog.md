@@ -1,3 +1,32 @@
+# [1.5.0](https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0) (2025-03-01)
+
+
+### Bug Fixes
+
+* **apt:** Correct file path for deb package in scp command ([d1fbeb4](https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6))
+* **apt:** Correctly sign package for PPA upload ([e248888](https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342))
+* **apt:** Disable host key verification for PPA upload to resolve SSH errors ([a62fa7a](https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069))
+* **apt:** Replace scp with rsync for more robust PPA upload ([f94a274](https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c))
+* **apt:** Use dput for PPA uploads ([8f3e5b7](https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068))
+* artifacts path and spelling typo correction ([76099a4](https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e))
+* **choco:** Include LICENSE.txt and VERIFICATION.txt in package ([c3c0b70](https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a))
+* **debian:** Define Build Steps in debian/rules File ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([c1647b7](https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d))
+* **debian:** Install dh-python package in GitHub Actions workflow ([ee9fb39](https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb))
+* **debian:** Use pybuild for Debian builds ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([50d06e5](https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c))
+* **debug:** set dput to debug mode for increased verbosity ([498e390](https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321))
+* **deps:** dh-python and python3-all-dev added to install debian packaging tools step ([8e55e9e](https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b))
+* secret name prefix typo and use as secret not variable ([54f5aa4](https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3))
+* tar file changed as we read it error ([227a434](https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988))
+
+
+### Features
+
+* **ci:** Add build steps to choco-test.yml for package creation ([b40ac56](https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d))
+* **ci:** Add GitHub Actions workflow for Chocolatey package testing ([748f746](https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c))
+* **ci:** Enhance choco-test.yml with detailed logging for debugging ([ba5880a](https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e))
+* Enhance Chocolatey install script for robustness ([5cb11c5](https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738)), closes [#14](https://github.com/atxtechbro/siphon/issues/14)
+* try using yuezk/publish-ppa-package@v2 from github actions marketplace ([87d8889](https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7))
+
 # [1.4.0](https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.4.0) (2025-02-19)
 
 
