@@ -40,3 +40,4 @@ jobs:
           deb_email: "morganj2k@gmail.com"
           deb_fullname: "Morgan Joyce"
           debian_dir: debian
+          series: focal
