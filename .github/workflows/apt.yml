@@ -27,18 +27,21 @@ jobs:
 
       - name: Create Tarball
         run: |
-          PACKAGE_DIR="siphon-source"  # Define a name for the top-level directory
+          PACKAGE_NAME="siphon" # Ensure this is your correct package name
+          PACKAGE_VERSION="${{ env.VERSION }}"
+          PACKAGE_DIR="${PACKAGE_NAME}-version" # Top-level dir: "siphon-version"
+      
           mkdir $PACKAGE_DIR
       
-          # Use find and cpio to copy files into the PACKAGE_DIR
-          find . -maxdepth 1 -not -name "$PACKAGE_DIR" -not -path "./artifacts" -print0 | cpio -pdm0 $PACKAGE_DIR
+          # Copy files (excluding 'artifacts' and '.git*')
+          find . -maxdepth 1 -not -name artifacts -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
       
-          mkdir artifacts # Ensure 'artifacts' directory exists for tarball output
+          mkdir artifacts
       
-          # Create the tarball, changing to the PACKAGE_DIR first (-C option)
+          # Create tarball with top-level dir named "siphon-version"
           tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz -C $PACKAGE_DIR .
       
-          rm -rf $PACKAGE_DIR         # Clean up the temporary directory
+          rm -rf $PACKAGE_DIR
     
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
