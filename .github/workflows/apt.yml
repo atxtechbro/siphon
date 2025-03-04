@@ -43,7 +43,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
-          path: "siphon_${{ env.VERSION }}.tar.gz"
+          path: "siphon_${{ env.VERSION }}.orig.tar.gz"
 
       - name: Publish to PPA
         uses: atxtechbro/publish-ppa-package@main
