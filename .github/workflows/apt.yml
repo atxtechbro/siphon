@@ -79,12 +79,16 @@ jobs:
 
 
       - name: Publish to PPA
+        working-directory: ${{ github.workspace }}  # <--- EXPLICITLY SET WORKING DIRECTORY
         run: |
           PPA_TARBALL_PATH="$GITHUB_WORKSPACE/artifacts/siphon_${{ env.VERSION }}.tar.gz" # Define full tarball path explicitly
           echo "DEBUG: PPA_TARBALL_PATH in Publish to PPA step: $PPA_TARBALL_PATH" # DEBUG
-          cp "$PPA_TARBALL_PATH" . # DEBUG - copy tarball to current dir to see if cp works
-          ls -l # DEBUG - list current directory in Publish to PPA step
-          
+          mkdir -p "$GITHUB_WORKSPACE/debug_ppa_files" # Create debug subdir in workspace
+          cp "$PPA_TARBALL_PATH" "$GITHUB_WORKSPACE/debug_ppa_files/" # DEBUG - copy to subdir in workspace
+          ls -l "$GITHUB_WORKSPACE/debug_ppa_files/" # DEBUG - list debug subdir
+          ls -l # DEBUG - list current directory (again, for comparison)
+          ls -l "$GITHUB_WORKSPACE" # DEBUG - list GITHUB_WORKSPACE
+
           uses: atxtechbro/publish-ppa-package@main
           with:
             repository: "atxtechbro/siphon-cli"
