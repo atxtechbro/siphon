@@ -36,6 +36,12 @@ jobs:
           # Copy ONLY source code files (exclude debian dir and artifacts)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
           cd original-source # Change to original-source dir for tar command
+
+          echo "DEBUG: Current working directory (before orig.tar.gz):"
+          pwd # *** DEBUG - PRINT WORKING DIRECTORY ***
+          echo "DEBUG: Listing files in current directory (before orig.tar.gz):"
+          ls -l # *** DEBUG - LIST DIRECTORY CONTENTS ***
+
           echo "DEBUG: Creating original source tarball..."
           tar -czvvvf "siphon_${{ env.VERSION }}.orig.tar.gz" .
           if [ $? -ne 0 ]; then # Check exit code of tar
@@ -62,24 +68,21 @@ jobs:
 
           rm -rf original-source # Cleanup temporary original-source dir
 
-      - name: Upload Tarball Artifact # <--- Modified to upload specific tarball
+      - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
-          path: "siphon_${{ env.VERSION }}.tar.gz"  # <--- Specific path to the Debian tarball
+          path: "siphon_${{ env.VERSION }}.tar.gz"
 
       - name: Publish to PPA
-        uses: atxtechbro/publish-ppa-package@main # Move 'uses' here, outside 'run'
-        with: # 'with' should be aligned with 'uses'
+        uses: atxtechbro/publish-ppa-package@main
+        with:
           repository: "atxtechbro/siphon-cli"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-          tarball: "siphon_${{ env.VERSION }}.tar.gz"  # Use simple filename, as artifact is downloaded to workspace root
+          tarball: "siphon_${{ env.VERSION }}.tar.gz"
           deb_email: "morganj2k@gmail.com"
           deb_fullname: "Morgan Joyce"
           debian_dir: debian
           series: focal
           debmake_arguments: "-p siphon -u 1.5.0"
-        env:
-          PACKAGE_VERSION: "${{ env.VERSION }}" # Pass PACKAGE_VERSION if needed by the action
-        if: always() # Keep always() for now for debugging
