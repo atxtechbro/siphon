@@ -28,21 +28,24 @@ jobs:
       - name: Create Tarball
         run: |
           PACKAGE_NAME="siphon" # Ensure this is your correct package name
-          PACKAGE_VERSION="${{ env.VERSION }}"
-          PACKAGE_DIR="${PACKAGE_NAME}-version" # Top-level dir: "siphon-version"
+          # PACKAGE_VERSION="${{ env.VERSION }}" # Version not used in directory name
+          PACKAGE_DIR="${PACKAGE_NAME}" # Top-level dir: "siphon" (package name only)
       
           mkdir $PACKAGE_DIR
+          mkdir $PACKAGE_DIR/debian # Create 'debian' subdirectory inside the source dir
       
-          # Copy files (excluding 'artifacts' and '.git*')
-          find . -maxdepth 1 -not -name artifacts -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
+          # Copy files (excluding 'artifacts' and '.git*') into the source dir
+          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
+          # Copy debian directory into the source dir
+          cp -r debian/* $PACKAGE_DIR/debian/
       
           mkdir artifacts
       
-          # Create tarball with top-level dir named "siphon-version"
+          # Create tarball with top-level dir "siphon" (package name only)
           tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz -C $PACKAGE_DIR .
       
           rm -rf $PACKAGE_DIR
-    
+      
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
