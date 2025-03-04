@@ -27,20 +27,18 @@ jobs:
 
       - name: Create Tarball
         run: |
-          PACKAGE_DIR="siphon-source"  # Define a name for the top-level directory in the tarball
-          mkdir $PACKAGE_DIR         # Create this directory
+          PACKAGE_DIR="siphon-source"  # Define a name for the top-level directory
+          mkdir $PACKAGE_DIR
       
-          # Copy all files and directories into the top-level directory
-          # EXCEPT for the 'artifacts' directory itself (to avoid recursion)
-          cp -r --no-target-directory * $PACKAGE_DIR
-          rm -rf $PACKAGE_DIR/artifacts # Remove artifacts dir if it got copied (safety measure)
+          # Use find and cpio to copy files into the PACKAGE_DIR
+          find . -maxdepth 1 -not -name "$PACKAGE_DIR" -not -path "./artifacts" -print0 | cpio -pdm0 $PACKAGE_DIR
       
-          mkdir artifacts # Ensure 'artifacts' directory exists at the workflow root for tarball output
+          mkdir artifacts # Ensure 'artifacts' directory exists for tarball output
       
           # Create the tarball, changing to the PACKAGE_DIR first (-C option)
           tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz -C $PACKAGE_DIR .
       
-          rm -rf $PACKAGE_DIR         # Clean up the temporary top-level directory
+          rm -rf $PACKAGE_DIR         # Clean up the temporary directory
     
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
