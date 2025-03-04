@@ -75,13 +75,6 @@ jobs:
           name: tarball-artifact
           path: "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz"  # <--- Specific path to the Debian tarball
 
-
-      - name: Download Tarball Artifact # <--- NEW STEP - Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: tarball-artifact
-          path: . # Download to the workspace root
-
       - name: Publish to PPA
         uses: atxtechbro/publish-ppa-package@main # Move 'uses' here, outside 'run'
         with: # 'with' should be aligned with 'uses'
