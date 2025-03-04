@@ -37,7 +37,7 @@ jobs:
           path: artifacts/siphon_${{ env.VERSION }}.tar.gz
 
       - name: Publish to PPA
-        uses: yuezk/publish-ppa-package@v2
+        uses: atxtechbro/publish-ppa-package@main
         with:
           repository: "atxtechbro/siphon-cli"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
