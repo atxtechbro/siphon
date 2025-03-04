@@ -24,21 +24,21 @@ jobs:
           mkdir original-source
           # Copy ONLY source code files (exclude debian dir and artifacts)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
-      
+
           echo "DEBUG: Current working directory (before orig.tar.gz):"
           pwd # *** DEBUG - PRINT WORKING DIRECTORY ***
           echo "DEBUG: Listing files in current directory (before orig.tar.gz):"
           ls -l # *** DEBUG - LIST DIRECTORY CONTENTS ***
-      
+
           echo "DEBUG: Creating original source tarball..."
           tar -czvvvf "siphon_${{ env.VERSION }}.orig.tar.gz" -C original-source .  # Create tarball from parent dir
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
           fi
-      
+
           rm -rf original-source # Cleanup temporary original-source dir
-      
+
           # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz)
           PACKAGE_NAME="siphon" # Top-level dir: "siphon" (package name only)
           mkdir $PACKAGE_NAME
@@ -60,13 +60,11 @@ jobs:
         with:
           name: tarball-artifact
           path: "siphon_${{ env.VERSION }}.orig.tar.gz"
-    
+
       - name: Rename Extracted Directory
         run: |
-          # Safely capture the extracted directory name
-          extracted_dir=$(find . -maxdepth 1 -type d -name "*" -print0 | head -z -n 1 | xargs -0 -n 1 basename)
-          # Rename the directory
-          mv "$extracted_dir" "siphon-1.5.0"
+          # Rename the directory directly, assuming 'siphon' is the checkout dir
+          mv siphon "siphon-1.5.0"
           cd "siphon-1.5.0"
 
       - name: Publish to PPA
