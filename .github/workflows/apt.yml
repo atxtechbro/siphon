@@ -39,22 +39,6 @@ jobs:
 
           rm -rf original-source # Cleanup temporary original-source dir
 
-          # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz)
-          PACKAGE_NAME="siphon" # Top-level dir: "siphon" (package name only)
-          mkdir $PACKAGE_NAME
-          mkdir $PACKAGE_NAME/debian
-          # Copy source files (excluding artifacts, debian, .git*)
-          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_NAME
-          # Copy debian dir
-          cp -r debian/* "$PACKAGE_NAME/debian/"
-          echo "DEBUG: Creating Debian source tarball..."
-          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C "$PACKAGE_NAME" .
-          if [ $? -ne 0 ]; then # Check exit code of tar
-            echo "ERROR: Failed to create Debian source tarball!"
-            exit 1
-          fi
-          rm -rf $PACKAGE_NAME
-
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
