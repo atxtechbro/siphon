@@ -27,24 +27,30 @@ jobs:
 
       - name: Create Tarball
         run: |
-          PACKAGE_NAME="siphon" # Ensure this is your correct package name
-          # PACKAGE_VERSION="${{ env.VERSION }}" # Version not used in directory name
+          PACKAGE_NAME="siphon"
+          PACKAGE_VERSION="${{ env.VERSION }}"
+          PACKAGE_BASE_DIR="${PACKAGE_NAME}" # Top-level dir for both tarballs will be just "siphon"
+      
+          # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
+          mkdir original-source
+          # Copy ONLY source code files (exclude debian dir and artifacts)
+          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
+          cd original-source # Change to original-source dir for tar command
+          tar -czvf ../artifacts/siphon_${{ env.VERSION }}.orig.tar.gz . # Create orig.tar.gz in artifacts dir
+          cd .. # Go back to workflow root
+      
+          # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz) - (May not be needed, but create for now)
           PACKAGE_DIR="${PACKAGE_NAME}" # Top-level dir: "siphon" (package name only)
-      
           mkdir $PACKAGE_DIR
-          mkdir $PACKAGE_DIR/debian # Create 'debian' subdirectory inside the source dir
-      
-          # Copy files (excluding 'artifacts' and '.git*') into the source dir
+          mkdir $PACKAGE_DIR/debian
+          # Copy source files (excluding artifacts, debian, .git*)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
-          # Copy debian directory into the source dir
+          # Copy debian dir
           cp -r debian/* $PACKAGE_DIR/debian/
-      
-          mkdir artifacts
-      
-          # Create tarball with top-level dir "siphon" (package name only)
           tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz -C $PACKAGE_DIR .
-      
           rm -rf $PACKAGE_DIR
+      
+          rm -rf original-source # Cleanup temporary original-source dir
       
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
