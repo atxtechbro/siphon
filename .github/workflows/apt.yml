@@ -30,17 +30,18 @@ jobs:
           PACKAGE_NAME="siphon"
           PACKAGE_VERSION="${{ env.VERSION }}"
           PACKAGE_BASE_DIR="${PACKAGE_NAME}" # Top-level dir for both tarballs will be just "siphon"
-      
-          mkdir artifacts # <--- Create artifacts directory FIRST, at the beginning of the step
-      
+          ARTIFACTS_DIR="$GITHUB_WORKSPACE/artifacts" # Define absolute path for artifacts
+
+          mkdir -p "$ARTIFACTS_DIR" # Create artifacts directory using absolute path
+
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
           mkdir original-source
           # Copy ONLY source code files (exclude debian dir and artifacts)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
           cd original-source # Change to original-source dir for tar command
-          tar -czvf ../artifacts/siphon_${{ env.VERSION }}.orig.tar.gz . # Create orig.tar.gz in artifacts dir
+          tar -czvf "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.orig.tar.gz" . # Create orig.tar.gz in artifacts dir using ABSOLUTE path
           cd .. # Go back to workflow root
-      
+
           # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz) - (May not be needed, but create for now)
           PACKAGE_DIR="${PACKAGE_NAME}" # Top-level dir: "siphon" (package name only)
           mkdir $PACKAGE_DIR
@@ -49,16 +50,16 @@ jobs:
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
           # Copy debian dir
           cp -r debian/* $PACKAGE_DIR/debian/
-          tar -czvf artifacts/siphon_${{ env.VERSION }}.tar.gz -C $PACKAGE_DIR .
+          tar -czvf "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz" -C $PACKAGE_DIR . # Use ABSOLUTE path here too
           rm -rf $PACKAGE_DIR
-      
+
           rm -rf original-source # Cleanup temporary original-source dir
-      
+
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
-          path: artifacts/siphon_${{ env.VERSION }}.tar.gz
+          path: "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz" # Use absolute path for upload
 
       - name: Publish to PPA
         uses: atxtechbro/publish-ppa-package@main
@@ -66,7 +67,7 @@ jobs:
           repository: "atxtechbro/siphon-cli"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-          tarball: artifacts/siphon_${{ env.VERSION }}.tar.gz
+          tarball: "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz" # Use absolute path for publish
           deb_email: "morganj2k@gmail.com"
           deb_fullname: "Morgan Joyce"
           debian_dir: debian
