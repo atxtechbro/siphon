@@ -30,10 +30,6 @@ jobs:
           PACKAGE_NAME="siphon"
           PACKAGE_VERSION="${{ env.VERSION }}"
           PACKAGE_BASE_DIR="${PACKAGE_NAME}" # Top-level dir for both tarballs will be just "siphon"
-          ARTIFACTS_DIR="$GITHUB_WORKSPACE/artifacts" # Define absolute path to artifacts directory
-
-          echo "DEBUG: ARTIFACTS_DIR in Create Tarball step: $ARTIFACTS_DIR" # *** DEBUG PRINT ***
-          mkdir -p "$ARTIFACTS_DIR" # Create artifacts directory at the absolute path
 
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
           mkdir original-source
@@ -41,7 +37,7 @@ jobs:
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
           cd original-source # Change to original-source dir for tar command
           echo "DEBUG: Creating original source tarball..."
-          tar -czvvvf "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.orig.tar.gz" . # Create orig.tar.gz in artifacts dir using absolute path, verbose output
+          tar -czvvvf siphon_${{ env.VERSION }}.orig.tar.gz" .
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
@@ -57,7 +53,7 @@ jobs:
           # Copy debian dir
           cp -r debian/* $PACKAGE_DIR/debian/
           echo "DEBUG: Creating Debian source tarball..."
-          tar -czvvvf "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz" -C $PACKAGE_DIR . # Use absolute path for tar command, verbose output
+          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C $PACKAGE_DIR . # Use absolute path for tar command, verbose output
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create Debian source tarball!"
             exit 1
@@ -66,14 +62,11 @@ jobs:
 
           rm -rf original-source # Cleanup temporary original-source dir
 
-          echo "DEBUG: Listing artifacts directory after tarball creation:"
-          ls -l "$ARTIFACTS_DIR" # *** ADDED DIRECTORY LISTING DEBUG ***
-
       - name: Upload Tarball Artifact # <--- Modified to upload specific tarball
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
-          path: "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz"  # <--- Specific path to the Debian tarball
+          path: "siphon_${{ env.VERSION }}.tar.gz"  # <--- Specific path to the Debian tarball
 
       - name: Publish to PPA
         uses: atxtechbro/publish-ppa-package@main # Move 'uses' here, outside 'run'
