@@ -20,17 +20,10 @@ jobs:
 
       - name: Create Tarball
         run: |
-          set -e  # Exit immediately if any command fails
-
-          PACKAGE_NAME="siphon"
-          PACKAGE_VERSION="${{ env.VERSION }}"
-          PACKAGE_BASE_DIR="${PACKAGE_NAME}" # Top-level dir for both tarballs will be just "siphon"
-
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
           mkdir original-source
           # Copy ONLY source code files (exclude debian dir and artifacts)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
-          cd original-source # Change to original-source dir for tar command
 
           echo "DEBUG: Current working directory (before orig.tar.gz):"
           pwd # *** DEBUG - PRINT WORKING DIRECTORY ***
@@ -38,28 +31,11 @@ jobs:
           ls -l # *** DEBUG - LIST DIRECTORY CONTENTS ***
 
           echo "DEBUG: Creating original source tarball..."
-          tar -czvvvf "siphon_${{ env.VERSION }}.orig.tar.gz" .
+          tar -czvvvf "siphon_${{ env.VERSION }}.orig.tar.gz" -C original-source .  # Create tarball from parent dir
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
           fi
-          cd .. # Go back to workflow root
-
-          # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz) - (May not be needed, but create for now)
-          PACKAGE_DIR="${PACKAGE_NAME}" # Top-level dir: "siphon" (package name only)
-          mkdir $PACKAGE_DIR
-          mkdir $PACKAGE_DIR/debian
-          # Copy source files (excluding artifacts, debian, .git*)
-          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
-          # Copy debian dir
-          cp -r debian/* "$PACKAGE_DIR/debian/"
-          echo "DEBUG: Creating Debian source tarball..."
-          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C "$PACKAGE_DIR" .
-          if [ $? -ne 0 ]; then # Check exit code of tar
-            echo "ERROR: Failed to create Debian source tarball!"
-            exit 1
-          fi
-          rm -rf $PACKAGE_DIR
 
           rm -rf original-source # Cleanup temporary original-source dir
 
