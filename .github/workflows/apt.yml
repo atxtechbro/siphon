@@ -37,7 +37,7 @@ jobs:
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
           cd original-source # Change to original-source dir for tar command
           echo "DEBUG: Creating original source tarball..."
-          tar -czvvvf siphon_${{ env.VERSION }}.orig.tar.gz" .
+          tar -czvvvf "siphon_${{ env.VERSION }}.orig.tar.gz" .
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
@@ -51,9 +51,9 @@ jobs:
           # Copy source files (excluding artifacts, debian, .git*)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_DIR
           # Copy debian dir
-          cp -r debian/* $PACKAGE_DIR/debian/
+          cp -r debian/* "$PACKAGE_DIR/debian/"
           echo "DEBUG: Creating Debian source tarball..."
-          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C $PACKAGE_DIR . # Use absolute path for tar command, verbose output
+          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C "$PACKAGE_DIR" .
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create Debian source tarball!"
             exit 1
