@@ -18,11 +18,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Debian Packaging Tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y devscripts build-essential dh-make debhelper python3-all dput dh-python python3-all-dev
-
       - name: Create Tarball
         run: |
           set -e  # Exit immediately if any command fails
