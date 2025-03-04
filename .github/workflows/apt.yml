@@ -71,30 +71,32 @@ jobs:
           echo "DEBUG: Listing artifacts directory after tarball creation:"
           ls -l "$ARTIFACTS_DIR" # *** ADDED DIRECTORY LISTING DEBUG ***
 
-      - name: Upload Tarball Artifact
+      - name: Upload Tarball Artifact # <--- Modified to upload specific tarball
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
-          path: artifacts/*  # <--- Use wildcard path here
+          path: "$ARTIFACTS_DIR/siphon_${{ env.VERSION }}.tar.gz"  # <--- Specific path to the Debian tarball
 
+
+      - name: Download Tarball Artifact # <--- NEW STEP - Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tarball-artifact
+          path: . # Download to the workspace root
 
       - name: Publish to PPA
-        working-directory: ${{ github.workspace }}  # <--- EXPLICITLY SET WORKING DIRECTORY
+        working-directory: ${{ github.workspace }}
         run: |
-          PPA_TARBALL_PATH="$GITHUB_WORKSPACE/artifacts/siphon_${{ env.VERSION }}.tar.gz" # Define full tarball path explicitly
-          echo "DEBUG: PPA_TARBALL_PATH in Publish to PPA step: $PPA_TARBALL_PATH" # DEBUG
-          mkdir -p "$GITHUB_WORKSPACE/debug_ppa_files" # Create debug subdir in workspace
-          cp "$PPA_TARBALL_PATH" "$GITHUB_WORKSPACE/debug_ppa_files/" # DEBUG - copy to subdir in workspace
-          ls -l "$GITHUB_WORKSPACE/debug_ppa_files/" # DEBUG - list debug subdir
-          ls -l # DEBUG - list current directory (again, for comparison)
-          ls -l "$GITHUB_WORKSPACE" # DEBUG - list GITHUB_WORKSPACE
+          PPA_TARBALL_PATH="siphon_${{ env.VERSION }}.tar.gz" # Path to downloaded artifact in workspace root
+          echo "DEBUG: PPA_TARBALL_PATH in Publish to PPA step: $PPA_TARBALL_PATH (downloaded artifact)" # DEBUG
+          ls -l # DEBUG - list current directory
 
           uses: atxtechbro/publish-ppa-package@main
           with:
             repository: "atxtechbro/siphon-cli"
             gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
             gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-            tarball: "$PPA_TARBALL_PATH"  # Use explicitly defined absolute path
+            tarball: "$PPA_TARBALL_PATH"  # Use path to downloaded artifact
             deb_email: "morganj2k@gmail.com"
             deb_fullname: "Morgan Joyce"
             debian_dir: debian
@@ -103,4 +105,4 @@ jobs:
         env:
           PACKAGE_VERSION: "${{ env.VERSION }}" # Pass PACKAGE_VERSION if needed by the action
 
-        if: always() # Make sure this step always runs for debugging even if previous fail
+        if: always() # Keep always() for now for debugging
