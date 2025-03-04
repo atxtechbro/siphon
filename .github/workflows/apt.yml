@@ -63,13 +63,11 @@ jobs:
     
       - name: Rename Extracted Directory
         run: |
-          # Extract the version from the tarball filename
-          VERSION=$(echo "siphon_${{ env.VERSION }}.orig.tar.gz" | sed -E 's/siphon_(.*)\.orig\.tar\.gz/\1/')
           # Safely capture the extracted directory name
           extracted_dir=$(find . -maxdepth 1 -type d -name "*" -print0 | head -z -n 1 | xargs -0 -n 1 basename)
           # Rename the directory
-          mv "$extracted_dir" "siphon-${VERSION}"
-          cd "siphon-${VERSION}"
+          mv "$extracted_dir" "siphon-1.5.0"
+          cd "siphon-1.5.0"
 
       - name: Publish to PPA
         uses: atxtechbro/publish-ppa-package@main
