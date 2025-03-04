@@ -56,4 +56,4 @@ jobs:
           deb_fullname: "Morgan Joyce"
           debian_dir: debian
           series: focal
-          debmake_arguments: "-p siphon -u 1.5.0"
+          debmake_arguments: "-f siphon_${{ env.VERSION }}.orig.tar.gz -p siphon -u 1.5.0"
