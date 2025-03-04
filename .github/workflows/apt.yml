@@ -31,6 +31,8 @@ jobs:
           PACKAGE_VERSION="${{ env.VERSION }}"
           PACKAGE_BASE_DIR="${PACKAGE_NAME}" # Top-level dir for both tarballs will be just "siphon"
       
+          mkdir artifacts # <--- Create artifacts directory FIRST, at the beginning of the step
+      
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
           mkdir original-source
           # Copy ONLY source code files (exclude debian dir and artifacts)
