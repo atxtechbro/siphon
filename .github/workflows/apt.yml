@@ -46,7 +46,7 @@ jobs:
           path: "siphon_${{ env.VERSION }}.orig.tar.gz"
 
       - name: Publish to PPA
-        uses: atxtechbro/publish-ppa-package@main
+        uses: atxtechbro/publish-ppa-package@fix/build-tarball-path
         with:
           repository: "atxtechbro/siphon-cli"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
