@@ -63,6 +63,7 @@ jobs:
 
       - name: Rename Extracted Directory
         run: |
+          cd .. # Move to the parent directory where 'siphon' is located
           # Rename the directory directly, assuming 'siphon' is the checkout dir
           mv siphon "siphon-1.5.0"
           cd "siphon-1.5.0"
