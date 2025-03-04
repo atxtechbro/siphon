@@ -1,3 +1,43 @@
+# [1.5.0](https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0) (2025-03-04)
+
+
+### Bug Fixes
+
+* **apt:** Correct file path for deb package in scp command ([d1fbeb4](https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6))
+* **apt:** Correctly sign package for PPA upload ([e248888](https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342))
+* **apt:** Disable host key verification for PPA upload to resolve SSH errors ([a62fa7a](https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069))
+* **apt:** Replace scp with rsync for more robust PPA upload ([f94a274](https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c))
+* **apt:** Use dput for PPA uploads ([8f3e5b7](https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068))
+* artifacts path and spelling typo correction ([76099a4](https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e))
+* **choco:** Include LICENSE.txt and VERIFICATION.txt in package ([c3c0b70](https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a))
+* **debian:** Define Build Steps in debian/rules File ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([c1647b7](https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d))
+* **debian:** Install dh-python package in GitHub Actions workflow ([ee9fb39](https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb))
+* **debian:** Use pybuild for Debian builds ([#15](https://github.com/atxtechbro/siphon/issues/15)) ([50d06e5](https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c))
+* **debug:** set dput to debug mode for increased verbosity ([498e390](https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321))
+* **deps:** dh-python and python3-all-dev added to install debian packaging tools step ([8e55e9e](https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b))
+* secret name prefix typo and use as secret not variable ([54f5aa4](https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3))
+* tar file changed as we read it error ([227a434](https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988))
+* **workflow:** Correct debmake arguments to use single hyphens for package and version ([163fba5](https://github.com/atxtechbro/siphon/commit/163fba5bf2a9c0f06124a0ddeb475d891dcd2500)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Correct tarball creation to include top-level source directory ([92ed724](https://github.com/atxtechbro/siphon/commit/92ed724ac6b257879859c5a2a15c676bf0bd6d38)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Ensure artifacts dir exists before creating tarballs ([7511368](https://github.com/atxtechbro/siphon/commit/7511368cc9304650fea0657f7bcdfd143940961a))
+* **workflow:** Ensure artifacts directory exists before creating tarballs ([57eed95](https://github.com/atxtechbro/siphon/commit/57eed9569af68010429b34076e27f6c2e5ad24a0)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Rename tarball top-level directory to "package-version" for debmake ([2a56934](https://github.com/atxtechbro/siphon/commit/2a569340304fb6af98e9c30ae8405bfb04e509cf)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Replace cp with find/cpio for tarball creation to avoid "extra operand" error ([d1fdcdc](https://github.com/atxtechbro/siphon/commit/d1fdcdc7090db681c723c32b4df0433936c3af3f)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Structure tarball with debian dir inside top-level source dir ([e118bc6](https://github.com/atxtechbro/siphon/commit/e118bc62ff3933e3b5f54f62cbb4c3fa116c5391)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Update APT workflow to use forked publish-ppa-package action ([f7c9080](https://github.com/atxtechbro/siphon/commit/f7c908055ce4351e8b17ca91e67a7abd31d7fd36)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8) [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+
+
+### Features
+
+* **apt:** Add tarball artifact upload for debugging upstream issue ([dda0d67](https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643)), closes [#8](https://github.com/atxtechbro/siphon/issues/8) [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8) [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8) [#8](https://github.com/atxtechbro/siphon/issues/8) [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8) [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **ci:** Add build steps to choco-test.yml for package creation ([b40ac56](https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d))
+* **ci:** Add GitHub Actions workflow for Chocolatey package testing ([748f746](https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c))
+* **ci:** Enhance choco-test.yml with detailed logging for debugging ([ba5880a](https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e))
+* Enhance Chocolatey install script for robustness ([5cb11c5](https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738)), closes [#14](https://github.com/atxtechbro/siphon/issues/14)
+* try using yuezk/publish-ppa-package@v2 from github actions marketplace ([87d8889](https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7))
+* **workflow:** Generate original source tarball for debmake ([2619f2e](https://github.com/atxtechbro/siphon/commit/2619f2e875cda3dd5fb18e9c620499009c8df538)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+* **workflow:** Specify debmake arguments to explicitly set package name and version ([5f5717f](https://github.com/atxtechbro/siphon/commit/5f5717f42447e1782a9f3539a74c894f3ac64ed8)), closes [yuezk/publish-ppa-package#8](https://github.com/yuezk/publish-ppa-package/issues/8)
+
 # [1.5.0](https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0) (2025-03-01)
 
 
