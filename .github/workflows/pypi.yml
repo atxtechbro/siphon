@@ -1,16 +1,13 @@
 name: Release Python Package
 
 permissions:
-  contents: write # Allow the workflow to push tags and commit changes
-  issues: write # Allow the workflow to create issue comments
+  contents: write
+  issues: write
 
 on:
-  push:
-    branches:
-      - main
     tags:
       - "v*.*.*"
-  workflow_dispatch: # Manual trigger
+  workflow_dispatch:
 
 jobs:
   release:

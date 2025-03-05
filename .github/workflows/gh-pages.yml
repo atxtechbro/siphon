@@ -1,10 +1,7 @@
 name: Deploy MkDocs Site to GitHub Pages
 
 on:
-  push:
-    branches:
-      - main # Only run this on changes to main
-  workflow_dispatch: # Allow manual runs from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   build-deploy:
@@ -16,8 +13,8 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Fetch the entire history so gh-pages has a clean state
-          submodules: true # If you're using submodules, ensure this is set
+          fetch-depth: 0
+          submodules: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
