@@ -21,8 +21,19 @@ jobs:
       - name: Create Tarball
         run: |
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
-          # ... existing code ...
-      
+          PACKAGE_NAME="siphon"
+          VERSION="${{ env.VERSION }}" # Ensure VERSION is properly used
+          mkdir "$PACKAGE_NAME"
+          # Copy source files (excluding artifacts, debian, .git*) to package dir
+          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 "$PACKAGE_NAME"
+          echo "DEBUG: Creating original source tarball..."
+          tar -czvvf "${PACKAGE_NAME}-${VERSION}.orig.tar.gz" -C "$PACKAGE_NAME" .
+          if [ $? -ne 0 ]; then # Check exit code of tar
+            echo "ERROR: Failed to create original source tarball!"
+            exit 1
+          fi
+          rm -rf "$PACKAGE_NAME"
+
           # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz)
           PACKAGE_NAME="siphon"
           mkdir $PACKAGE_NAME
