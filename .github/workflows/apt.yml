@@ -44,6 +44,7 @@ jobs:
         with:
           name: tarball-artifact
           path: "siphon_${{ env.VERSION }}.orig.tar.gz"
+          if-no-files-found: error
 
       - name: Publish to PPA
         uses: yuezk/publish-ppa-package@v2
