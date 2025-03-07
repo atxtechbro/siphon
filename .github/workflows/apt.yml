@@ -21,34 +21,45 @@ jobs:
       - name: Create Tarball
         run: |
           # 1. Create Original Source Tarball (siphon-1.5.0.orig.tar.gz)
-          PACKAGE_NAME="siphon"
-          VERSION="${{ env.VERSION }}" # Ensure VERSION is properly used
-          mkdir "$PACKAGE_NAME"
-          # Copy source files (excluding artifacts, debian, .git*) to package dir
-          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 "$PACKAGE_NAME"
-          echo "DEBUG: Creating original source tarball..."
-          tar -czvvf "${PACKAGE_NAME}-${VERSION}.orig.tar.gz" -C "$PACKAGE_NAME" .
+          ORIG_TARBALL_NAME="siphon_${{ env.VERSION }}.orig.tar.gz"
+          mkdir original-source
+          # Copy ONLY source code files (exclude debian dir and artifacts)
+          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
+
+          echo "DEBUG: Current working directory (before orig.tar.gz):"
+          pwd # *** DEBUG - PRINT WORKING DIRECTORY ***
+          echo "DEBUG: Listing files in current directory (before orig.tar.gz):"
+          ls -l # *** DEBUG - LIST DIRECTORY CONTENTS ***
+
+          echo "DEBUG: Creating original source tarball: $ORIG_TARBALL_NAME"
+          tar -czvvvf "$ORIG_TARBALL_NAME" -C original-source .  # Create tarball in current dir
+
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
           fi
-          rm -rf "$PACKAGE_NAME"
+
+          ls -l # *** DEBUG - LIST DIRECTORY CONTENTS AFTER orig.tar.gz creation ***
+
+          rm -rf original-source # Cleanup temporary original-source dir
 
           # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz)
+          DEB_TARBALL_NAME="siphon_${{ env.VERSION }}.tar.gz"
           PACKAGE_NAME="siphon"
-          mkdir $PACKAGE_NAME
-          mkdir $PACKAGE_NAME/debian
+          mkdir "$PACKAGE_NAME"
+          mkdir "$PACKAGE_NAME/debian"
           # Copy source files (excluding artifacts, debian, .git*)
-          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 $PACKAGE_NAME
+          find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 "$PACKAGE_NAME"
           # Copy debian dir
           cp -r debian/* "$PACKAGE_NAME/debian/"
-          echo "DEBUG: Creating Debian source tarball..."
-          tar -czvvvf "siphon_${{ env.VERSION }}.tar.gz" -C "$PACKAGE_NAME" .
+          echo "DEBUG: Creating Debian source tarball: $DEB_TARBALL_NAME"
+          tar -czvvvf "$DEB_TARBALL_NAME" -C "$PACKAGE_NAME" .
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create Debian source tarball!"
             exit 1
           fi
-          rm -rf $PACKAGE_NAME
+          ls -l # *** DEBUG - LIST DIRECTORY CONTENTS AFTER deb.tar.gz creation ***
+          rm -rf "$PACKAGE_NAME"
 
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
