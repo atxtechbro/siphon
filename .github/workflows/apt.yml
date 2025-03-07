@@ -68,8 +68,12 @@ jobs:
           path: "siphon_${{ env.VERSION }}.orig.tar.gz"
           if-no-files-found: error
     
-      - name: Debug - Run debmake manually (with 'yes')
+      - name: Debug - Run debmake manually (with 'yes') and install debmake
         run: |
+          echo "DEBUG: Installing debmake..."
+          sudo apt-get update -y
+          sudo apt-get install -y debmake
+      
           echo "DEBUG: Running debmake manually with 'yes'..."
           yes | debmake -f /tmp/workspace/source/siphon_1.5.0.tar.gz -p siphon -u 1.5.0 -b:python3
           echo "DEBUG: debmake command finished."
