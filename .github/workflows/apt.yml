@@ -25,24 +25,24 @@ jobs:
           mkdir original-source
           # Copy ONLY source code files (exclude debian dir and artifacts)
           find . -maxdepth 1 -not -name artifacts -not -name debian -not -path "./.git*" -print0 | cpio -pdm0 original-source
-
+      
           echo "DEBUG: Current working directory (before orig.tar.gz):"
           pwd # *** DEBUG - PRINT WORKING DIRECTORY ***
           echo "DEBUG: Listing files in current directory (before orig.tar.gz):"
           ls -l # *** DEBUG - LIST DIRECTORY CONTENTS ***
-
+      
           echo "DEBUG: Creating original source tarball: $ORIG_TARBALL_NAME"
           tar -czvvvf "$ORIG_TARBALL_NAME" -C original-source .  # Create tarball in current dir
-
+      
           if [ $? -ne 0 ]; then # Check exit code of tar
             echo "ERROR: Failed to create original source tarball!"
             exit 1
           fi
-
+      
           ls -l # *** DEBUG - LIST DIRECTORY CONTENTS AFTER orig.tar.gz creation ***
-
+      
           rm -rf original-source # Cleanup temporary original-source dir
-
+      
           # 2. Create Debian Source Tarball (siphon_1.5.0.tar.gz)
           DEB_TARBALL_NAME="siphon_${{ env.VERSION }}.tar.gz"
           PACKAGE_NAME="siphon"
@@ -75,5 +75,5 @@ jobs:
           sudo apt-get install -y debmake
       
           echo "DEBUG: Running debmake manually with 'yes'..."
-          yes | debmake -f /tmp/workspace/source/siphon_1.5.0.tar.gz -p siphon -u 1.5.0 -b:python3
+          yes | debmake -f siphon_${{ env.VERSION }}.orig.tar.gz -p siphon -u 1.5.0 -b:python3
           echo "DEBUG: debmake command finished."
