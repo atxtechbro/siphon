@@ -1,15 +1,12 @@
 name: Publish APT Package
+
 on:
   push:
     tags:
       - 'v*'
     branches:
       - main
-  # TODO: Remove 'push' trigger and use only 'release' trigger for production.
-  # The 'push' trigger is currently used for faster iteration during workflow
-  # development.  It should be removed and replaced with the 'release' trigger
-  # below once the workflow is stable.
-  # release:
+  # release:  # Use release trigger for production, push for dev.
   #   types: [published]
 
 jobs:
@@ -30,38 +27,29 @@ jobs:
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version: $VERSION"
 
-      - name: Create Original Tarball
-        run: |
-          ORIG_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.orig.tar.gz"
-          git archive --format=tar.gz --prefix=siphon-${{ steps.get_version.outputs.version }}/ -o "$ORIG_TARBALL_NAME" HEAD
-          ls -l
-
-      - name: Create Debian Source Tarball
-        run: |
-          TEMP_DIR="temp_build"
-          mkdir -p "$TEMP_DIR/siphon-${{ steps.get_version.outputs.version }}"
-          # Use find to copy *everything*, including hidden files/directories
-          find . -print0 | cpio -pdm0 "$TEMP_DIR/siphon-${{ steps.get_version.outputs.version }}"
-          DEB_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.tar.gz"
-          tar -czvvvf "$DEB_TARBALL_NAME" -C "$TEMP_DIR" "siphon-${{ steps.get_version.outputs.version }}"
-          ls -l
-          rm -rf "$TEMP_DIR"
-
-      - name: Upload Tarball Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: tarball-artifact
-          path: |
-            siphon_${{ steps.get_version.outputs.version }}.orig.tar.gz
-            siphon_${{ steps.get_version.outputs.version }}.tar.gz
-          if-no-files-found: error
-
-      - name: Build Debian Package with debmake
+      - name: Install Dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y debmake lintian
-          debmake -v -f "siphon_${{ steps.get_version.outputs.version }}.tar.gz" -p "siphon_" -u "${{ steps.get_version.outputs.version }}-1"
+          sudo apt-get install -y debmake lintian build-essential devscripts
+
+      - name: Build Debian Package
+        id: build_package
+        run: |
+          # Use debuild, a cleaner way to build Debian packages
+          # '-b' builds a binary-only package (since it's pure Python, we don't need source)
+          # '-uc' and '-us' skip signing (for this example; you'd add signing steps later)
+          debuild -b -uc -us
+        working-directory: .  # Ensure we are in the root
 
       - name: Run Lintian
         run: |
-          lintian "../siphon_${{ steps.get_version.outputs.version }}-1_all.changes"
+          lintian ../*.changes  # Lintian should now find the .changes file one level up
+
+      - name: Upload Artifacts (Deb and Changes)
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-package
+          path: |
+            ../siphon_${{ steps.get_version.outputs.version }}-1_all.deb
+            ../siphon_${{ steps.get_version.outputs.version }}-1_all.changes
+          if-no-files-found: error

@@ -3,15 +3,17 @@ Section: python
 Priority: optional
 Maintainer: Morgan Joyce <morganj2k@gmail.com>
 Build-Depends:
-    debhelper (>= 11),
-    dh-python,
-    python3-setuptools,
-    python3-wheel,
+  debhelper-compat (= 13),
+  dh-python,
+  python3-setuptools,
+  python3-wheel,
+  python3-all
 Standards-Version: 4.6.0
 Homepage: https://docs.siphon-cli.com/
-X-Python3-Version: >= 3.6
+Vcs-Git: https://github.com/atxtechbro/siphon.git
+Vcs-Browser: https://github.com/atxtechbro/siphon
 
 Package: siphon
 Architecture: all
-Depends: python3
+Depends: ${python3:Depends}, ${misc:Depends}
 Description: CLI for siphoning data from multiple sources.
