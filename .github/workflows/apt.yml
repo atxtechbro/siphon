@@ -64,4 +64,4 @@ jobs:
 
       - name: Run Lintian
         run: |
-          lintian "siphon_${{ steps.get_version.outputs.version }}-1_all.changes"
+          lintian "../siphon_${{ steps.get_version.outputs.version }}-1_all.changes"
