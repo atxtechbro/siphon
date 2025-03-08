@@ -1,12 +1,16 @@
 name: Publish APT Package
 on:
-  release:
-    types: [published]
   push:
     tags:
       - 'v*'
     branches:
       - main
+  # TODO: Remove 'push' trigger and use only 'release' trigger for production.
+  # The 'push' trigger is currently used for faster iteration during workflow
+  # development.  It should be removed and replaced with the 'release' trigger
+  # below once the workflow is stable.
+  # release:
+  #   types: [published]
 
 jobs:
   apt:
@@ -15,10 +19,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Get Version from Tag
+      - name: Get Version from Tag or Fallback
         id: get_version
         run: |
-          VERSION=${GITHUB_REF_NAME#v}
+          if [[ "${{ github.ref_name }}" == v* ]]; then
+            VERSION=${GITHUB_REF_NAME#v}
+          else
+            VERSION="main"  # Fallback version for pushes to main
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Version: $VERSION"
 
@@ -32,7 +40,7 @@ jobs:
         run: |
           TEMP_DIR="temp_build"
           mkdir "$TEMP_DIR"
-          cp -r ./* "$TEMP_DIR/siphon_${{ steps.get_version.outputs.version }}/"  # Corrected line!
+          cp -r ./* "$TEMP_DIR/siphon_${{ steps.get_version.outputs.version }}/"
           DEB_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.tar.gz"
           tar -czvvvf "$DEB_TARBALL_NAME" -C "$TEMP_DIR" "siphon-${{ steps.get_version.outputs.version }}"
           ls -l
