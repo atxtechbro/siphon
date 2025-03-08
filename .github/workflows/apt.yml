@@ -36,6 +36,9 @@ jobs:
         run: |
           dch -v "${{ steps.get_version.outputs.version }}-1" "New release" --create --distribution unstable --force-distribution
         working-directory: .
+        env:
+          DEBEMAIL: morganj2k@gmail.com
+          DEBFULLNAME: Morgan Joyce
 
       - name: Build Debian Package
         id: build_package
