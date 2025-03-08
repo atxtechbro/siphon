@@ -36,7 +36,7 @@ jobs:
           # Create a temporary directory to build the source tarball
           TEMP_DIR="temp_build"
           mkdir "$TEMP_DIR"
-          cp -r . "$TEMP_DIR/siphon-${{ env.VERSION }}"
+          cp -r ./* "$TEMP_DIR/siphon_${{ env.VERSION }}/"
 
           # Create the Debian source tarball
           DEB_TARBALL_NAME="siphon_${{ env.VERSION }}.tar.gz"
