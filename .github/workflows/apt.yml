@@ -60,7 +60,7 @@ jobs:
         run: |
           sudo apt-get update -y
           sudo apt-get install -y debmake lintian
-          debmake -f "siphon_${{ steps.get_version.outputs.version }}.tar.gz" -p "siphon_" -u "${{ steps.get_version.outputs.version }}-1"
+          debmake -v -f "siphon_${{ steps.get_version.outputs.version }}.tar.gz" -p "siphon_" -u "${{ steps.get_version.outputs.version }}-1"
 
       - name: Run Lintian
         run: |
