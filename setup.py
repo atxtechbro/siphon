@@ -1,29 +1,15 @@
-import os
-
-from setuptools import find_packages, setup
-
-
-# Dynamically fetch the version from a version file or environment
-def get_version():
-    version_file = os.path.join(os.path.dirname(__file__), "VERSION")
-    if os.path.exists(version_file):
-        with open(version_file, "r") as f:
-            version = f.read().strip()
-            # Remove any extraneous quotes
-            return version.strip('"').strip("'")
-    return "0.0.0"  # Default fallback version
+from setuptools import setup
 
 setup(
-    name='siphon-cli',
-    version=get_version(),  # Fetch the dynamic version
+    name='siphon', # Consistent package name
+    version='1.5.0', # Hardcoded version for simplicity
     author='Morgan Joyce',
     author_email='morganj2k@gmail.com',
     description='A tool to efficiently extract and compress Git repository contents for LLMs.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/atxtechbro/siphon',
-    packages=find_packages(),
-    py_modules=['siphon'],
+    py_modules=['siphon'], # Declare siphon.py as a module
     install_requires=[
         'gitpython',
         'colorama',
