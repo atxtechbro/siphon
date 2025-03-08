@@ -5,9 +5,9 @@ permissions:
   issues: write
 
 on:
+  push:
     tags:
-      - "v*.*.*"
-  workflow_dispatch:
+      - "v*"
 
 jobs:
   release:
