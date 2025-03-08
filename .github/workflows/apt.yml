@@ -8,9 +8,6 @@ on:
     branches:
       - main
 
-env:
-  VERSION: 1.5.0  # Keep the hardcoded version for now, but see notes below
-
 jobs:
   apt:
     runs-on: ubuntu-latest
@@ -18,54 +15,46 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get Version from Tag
+        id: get_version
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
       - name: Create Original Tarball
         run: |
-          # Create the .orig.tar.gz.  Simpler and more reliable method.
-          ORIG_TARBALL_NAME="siphon_${{ env.VERSION }}.orig.tar.gz"
-          git archive --format=tar.gz --prefix=siphon-${{ env.VERSION }}/ -o "$ORIG_TARBALL_NAME" HEAD
-
-          if [ $? -ne 0 ]; then
-            echo "ERROR: Failed to create original source tarball!"
-            exit 1
-          fi
-
-          ls -l  # Debug: List files
+          ORIG_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.orig.tar.gz"
+          git archive --format=tar.gz --prefix=siphon-${{ steps.get_version.outputs.version }}/ -o "$ORIG_TARBALL_NAME" HEAD
+          ls -l
 
       - name: Create Debian Source Tarball
         run: |
-          # Create a temporary directory to build the source tarball
           TEMP_DIR="temp_build"
           mkdir "$TEMP_DIR"
-          cp -r ./* "$TEMP_DIR/siphon_${{ env.VERSION }}/"
-
-          # Create the Debian source tarball
-          DEB_TARBALL_NAME="siphon_${{ env.VERSION }}.tar.gz"
-
-          # Correct tar command: include the debian/ directory at the root of the tarball
-          tar -czvvvf "$DEB_TARBALL_NAME" -C "$TEMP_DIR" siphon-${{ env.VERSION }}
-
-          if [ $? -ne 0 ]; then
-            echo "ERROR: Failed to create Debian source tarball!"
-            exit 1
-          fi
-
-          ls -l  # Debug: List files
-          rm -rf "$TEMP_DIR" # Clean up temporary directory
+          cp -r ./* "$TEMP_DIR/siphon_${{ steps.get_version.outputs.version }}/"  # Corrected line!
+          DEB_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.tar.gz"
+          tar -czvvvf "$DEB_TARBALL_NAME" -C "$TEMP_DIR" "siphon-${{ steps.get_version.outputs.version }}"
+          ls -l
+          rm -rf "$TEMP_DIR"
 
       - name: Upload Tarball Artifact
         uses: actions/upload-artifact@v4
         with:
           name: tarball-artifact
           path: |
-            siphon_${{ env.VERSION }}.orig.tar.gz
-            siphon_${{ env.VERSION }}.tar.gz  # Upload BOTH tarballs
+            siphon_${{ steps.get_version.outputs.version }}.orig.tar.gz
+            siphon_${{ steps.get_version.outputs.version }}.tar.gz
           if-no-files-found: error
-
 
       - name: Build Debian Package with debmake
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y debmake
+          sudo apt-get install -y debmake lintian
+          debmake -f "siphon_${{ steps.get_version.outputs.version }}.tar.gz" -p "siphon_" -u "${{ steps.get_version.outputs.version }}-1"
 
-          # Correct debmake command:  Use the correct tarball and specify the package name and version
-          debmake -f "siphon_${{ env.VERSION }}.tar.gz" -p "siphon_" -u "${{ env.VERSION }}-1"
+      - name: Run Lintian
+        run: |
+          lintian "siphon_${{ steps.get_version.outputs.version }}-1_all.changes"
+
+      # Add steps here to upload the .deb and .changes files.
