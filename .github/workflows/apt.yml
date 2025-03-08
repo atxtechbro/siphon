@@ -39,8 +39,9 @@ jobs:
       - name: Create Debian Source Tarball
         run: |
           TEMP_DIR="temp_build"
-          mkdir "$TEMP_DIR"
-          cp -r ./* "$TEMP_DIR/siphon_${{ steps.get_version.outputs.version }}/"
+          mkdir -p "$TEMP_DIR/siphon-${{ steps.get_version.outputs.version }}"
+          # Use find to copy *everything*, including hidden files/directories
+          find . -print0 | cpio -pdm0 "$TEMP_DIR/siphon-${{ steps.get_version.outputs.version }}"
           DEB_TARBALL_NAME="siphon_${{ steps.get_version.outputs.version }}.tar.gz"
           tar -czvvvf "$DEB_TARBALL_NAME" -C "$TEMP_DIR" "siphon-${{ steps.get_version.outputs.version }}"
           ls -l
@@ -64,5 +65,3 @@ jobs:
       - name: Run Lintian
         run: |
           lintian "siphon_${{ steps.get_version.outputs.version }}-1_all.changes"
-
-      # Add steps here to upload the .deb and .changes files.
