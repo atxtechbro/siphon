@@ -1,0 +1,114 @@
+stages:
+  - build
+  - package
+  - publish
+  - deploy
+
+# APT Package Job
+build_apt_package:
+  stage: package
+  image: ubuntu:latest
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+    - if: $CI_COMMIT_BRANCH == "main"
+  script:
+    - apt-get update -y
+    - apt-get install -y debmake lintian build-essential devscripts
+    # Get version from tag or fallback
+    - |
+      if [[ "$CI_COMMIT_TAG" == v* ]]; then
+        VERSION=${CI_COMMIT_TAG#v}
+      else
+        VERSION="main"  # Fallback version for pushes to main
+      fi
+      echo "Version: $VERSION"
+    # Update Debian Changelog
+    - |
+      export DEBEMAIL="morganj2k@gmail.com"
+      export DEBFULLNAME="Morgan Joyce"
+      dch -v "$VERSION-1" "New release" --create --distribution unstable --force-distribution
+    # Build Debian Package
+    - debuild -b -uc -us
+    # Run Lintian
+    - lintian ../*.changes
+  artifacts:
+    paths:
+      - "../siphon_*-1_all.deb"
+      - "../siphon_*-1_all.changes"
+    expire_in: 1 week
+
+# Chocolatey Package Job
+build_chocolatey_package:
+  stage: package
+  image: mcr.microsoft.com/windows/servercore:ltsc2019
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+  script:
+    - powershell -command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+    - powershell -command "choco --version"
+    - powershell -command "pip install pyinstaller"
+    - powershell -command "pyinstaller --onefile siphon.py --name siphon.exe"
+    - powershell -command "Move-Item dist/siphon.exe ."
+    - powershell -command "New-Item -ItemType Directory -Path 'choco'"
+    - powershell -command "Copy-Item LICENSE.txt choco\"
+    - powershell -command "Copy-Item siphon.exe choco\"
+    - powershell -command "Get-FileHash -Algorithm SHA256 choco\siphon.exe | Format-List | Out-File -Encoding UTF8 choco\VERIFICATION.txt"
+    - powershell -command "cd choco && choco pack ../siphon.nuspec"
+  artifacts:
+    paths:
+      - "choco/siphon.*.nupkg"
+    expire_in: 1 week
+
+# PyPI Release Job
+pypi_release:
+  stage: publish
+  image: python:3-slim
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+  script:
+    - apt-get update -y && apt-get install -y nodejs npm
+    - npm install # Install semantic-release and its plugins
+    - pip install setuptools wheel twine pycryptodome
+    - npm install -g semantic-release @semantic-release/git @semantic-release/changelog
+    - npx semantic-release
+  variables:
+    TWINE_USERNAME: ${PYPI_USERNAME}
+    TWINE_PASSWORD: ${PYPI_PASSWORD}
+    # Add GitLab token for semantic-release
+    GITLAB_TOKEN: ${CI_JOB_TOKEN}
+
+# Chocolatey Publish Job
+publish_chocolatey:
+  stage: publish
+  image: mcr.microsoft.com/windows/servercore:ltsc2019
+  needs:
+    - build_chocolatey_package
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+  script:
+    - powershell -command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"
+    - |
+      if [[ "$CI_COMMIT_TAG" == v* ]]; then
+        VERSION=${CI_COMMIT_TAG#v}
+      else
+        VERSION="1.5.0"  # Fallback version
+      fi
+    - powershell -command "cd choco && choco push siphon.$VERSION.nupkg --source https://push.chocolatey.org/ --api-key ${CHOCOLATEY_API_KEY}"
+
+# MkDocs Deployment Job (GitLab Pages)
+pages:
+  stage: deploy
+  image: python:3-slim
+  script:
+    - pip install mkdocs mkdocs-material mkdocs-meta-descriptions-plugin
+    - mkdocs build --clean --verbose
+    - mv site public  # GitLab Pages expects the content to be in the 'public' directory
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_TAG =~ /^v/
+    - when: manual  # Allow manual triggering
+  variables:
+    GIT_STRATEGY: clone  # Ensures full git history is available
+    GIT_SUBMODULE_STRATEGY: recursive  # For submodules, similar to GitHub Actions
