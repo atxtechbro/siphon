@@ -1,9 +1,24 @@
 hello-world:
   tags:
-    - siphon
-    - popos
+    - main-only
+    - secure
   script:
     - echo "Hello, world! Running on $(hostname) at $(date)"
     - echo "Current directory: $(pwd)"
-    - echo "Files in directory:"
-    - ls -la
+
+security-check:
+  tags:
+    - main-only
+    - secure
+  only:
+    - main
+  script:
+    - echo "Security verification: Runner is protected"
+    - echo "Branch: $CI_COMMIT_BRANCH"
+
+should-not-run:
+  tags:
+    - different-tag
+  script:
+    - echo "This job should remain pending because no runner has the 'different-tag'"
+    - echo "If this runs, your runner protection isn't working as expected"
