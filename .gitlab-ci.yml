@@ -1,2 +1,9 @@
 hello-world:
   script: echo "Hello, world!"
+
+should-not-run:
+  tags:
+    - different-tag
+  only:
+    - tags
+  script: echo "This job should remain pending because no runner has this tag"
