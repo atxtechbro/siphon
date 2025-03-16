@@ -7,6 +7,11 @@ secure-job:
     - secure
   script: echo "This job should run on your protected runner"
 
+untagged-job:
+  script: 
+    - echo "This job has no tags"
+    - echo "It should run on any runner with run_untagged=true"
+
 should-not-run:
   tags:
     - different-tag
