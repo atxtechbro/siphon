@@ -1,6 +1,12 @@
 hello-world:
   script: echo "Hello, world!"
 
+secure-job:
+  tags:
+    - main-only
+    - secure
+  script: echo "This job should run on your protected runner"
+
 should-not-run:
   tags:
     - different-tag
