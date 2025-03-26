@@ -41,11 +41,16 @@ jobs:
           debuild -b -uc -us
         working-directory: .  # Ensure we are in the root
 
+      - name: Move artifacts to current directory
+        run: |
+          cp ../siphon_*.deb ./
+          cp ../siphon_*.changes ./
+    
       - name: Upload Artifacts (Deb and Changes)
         uses: actions/upload-artifact@v4
         with:
           name: debian-package
           path: |
-            ../siphon_${{ steps.get_version.outputs.version }}-1_all.deb
-            ../siphon_${{ steps.get_version.outputs.version }}-1_all.changes
-          if-no-files-found: error
+            ./siphon_*.deb
+            ./siphon_*.changes
+
