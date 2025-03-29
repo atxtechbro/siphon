@@ -6,23 +6,24 @@ on:
     workflows: ["Build Debian Package"]
     types:
       - completed
-    tags:
-      - 'v*'
   
-  # For testing the workflow on this PR branch
+  # For direct tag pushes or testing on the PR branch
   push:
     branches:
       - feat/launchpad-ppa-publishing
+    tags:
+      - 'v*'
 
 jobs:
   publish-ppa:
-    # Run on successful build workflow for version tags OR on direct pushes to PR branch
+    # Run on successful build workflow for version tags OR on direct pushes to PR branch OR on tag pushes
     if: |
       (github.event_name == 'workflow_run' && 
        github.event.workflow_run.conclusion == 'success' && 
        startsWith(github.event.workflow_run.head_branch, 'v')) || 
       (github.event_name == 'push' && 
-       github.ref == 'refs/heads/feat/launchpad-ppa-publishing')
+       (github.ref == 'refs/heads/feat/launchpad-ppa-publishing' || 
+        startsWith(github.ref, 'refs/tags/v')))
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -80,23 +81,13 @@ jobs:
           echo " - $(readlink -f $GITHUB_WORKSPACE/../siphon_0.1.0.orig.tar.gz)"
           echo " - $(readlink -f $GITHUB_WORKSPACE/../siphon-0.1.0.tar.gz)"
           
-      - name: Verify PPA setup (test only)
-        run: |
-          echo "Verification successful!"
-          echo "PPA publishing would be done using:"
-          echo "- Repository: atxtechbro/siphon"
-          echo "- GPG signing: Available"
-          echo "- Base directory: $(pwd)"
-          echo "- Series: jammy focal noble"
-          echo "- Native package: false"
-          
-          echo "To implement in production, use:"
-          echo "uses: yuezk/publish-ppa-package@v1"
-          echo "with:"
-          echo "  repository: \"atxtechbro/siphon\""
-          echo "  gpg_private_key: \${{ secrets.APT_GPG_PRIVATE_KEY }}"
-          echo "  gpg_passphrase: \${{ secrets.APT_GPG_PASSPHRASE }}"
-          echo "  pkgdir: \".\""
-          echo "  series: \"jammy\""
-          echo "  extra_series: \"focal noble\""
-          echo "  is_native: \"false\""
+      - name: Publish to Launchpad PPA
+        uses: yuezk/publish-ppa-package@v1
+        with:
+          repository: "atxtechbro/siphon"
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+          pkgdir: "."
+          series: "jammy"
+          extra_series: "focal noble"
+          is_native: "false"
