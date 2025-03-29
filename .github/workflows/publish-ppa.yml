@@ -1,0 +1,93 @@
+name: Publish to Launchpad PPA
+
+on:
+  # For production use with tags
+  workflow_run:
+    workflows: ["Build Debian Package"]
+    types:
+      - completed
+  
+  # For direct tag pushes or testing on the PR branch
+  push:
+    branches:
+      - feat/launchpad-ppa-publishing
+    tags:
+      - 'v*'
+
+jobs:
+  publish-ppa:
+    # Run on successful build workflow for version tags OR on direct pushes to PR branch OR on tag pushes
+    if: |
+      (github.event_name == 'workflow_run' && 
+       github.event.workflow_run.conclusion == 'success' && 
+       startsWith(github.event.workflow_run.head_branch, 'v')) || 
+      (github.event_name == 'push' && 
+       (github.ref == 'refs/heads/feat/launchpad-ppa-publishing' || 
+        startsWith(github.ref, 'refs/tags/v')))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          workflow_conclusion: success
+          name: debian-package
+          path: ./artifacts
+          
+      - name: List downloaded artifacts
+        run: |
+          echo "Contents of artifacts directory:"
+          ls -la ./artifacts
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y debmake build-essential devscripts debhelper-compat dh-python python3-all
+
+      # For PPA publishing, we need source packages, not binary packages
+      - name: Build source package for PPA
+        run: |
+          # Build source package for PPA upload
+          # Using -us -uc for now, the action will handle signing
+          debuild -S -sa -us -uc
+        working-directory: .
+
+      - name: List source files
+        run: |
+          echo "Generated source files:"
+          find ../ -name "siphon_*" -type f
+          echo "Source changes file to be published:"
+          SOURCE_FILE=$(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1 || echo "NO_SOURCE_FILE_FOUND")
+          echo $SOURCE_FILE
+          
+      - name: Create tarball for PPA
+        run: |
+          # Create a clean directory structure for the tarball
+          mkdir -p /tmp/siphon-build/siphon-0.1.0
+          # Copy all files except excluded ones
+          rsync -av --exclude='.git' --exclude='debian' --exclude='artifacts' . /tmp/siphon-build/siphon-0.1.0/
+          # Create the tarball in BOTH required formats
+          cd /tmp/siphon-build
+          tar -czf siphon_0.1.0.orig.tar.gz siphon-0.1.0
+          tar -czf siphon-0.1.0.tar.gz siphon-0.1.0
+          # Copy to parent directory as required by the action
+          cp siphon_0.1.0.orig.tar.gz $GITHUB_WORKSPACE/../
+          cp siphon-0.1.0.tar.gz $GITHUB_WORKSPACE/../
+          
+          echo "Created tarballs:"
+          echo " - $(readlink -f $GITHUB_WORKSPACE/../siphon_0.1.0.orig.tar.gz)"
+          echo " - $(readlink -f $GITHUB_WORKSPACE/../siphon-0.1.0.tar.gz)"
+          
+      - name: Publish to Launchpad PPA
+        uses: yuezk/publish-ppa-package@v1
+        with:
+          repository: "atxtechbro/siphon"
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+          pkgdir: "."
+          series: "jammy"
+          extra_series: "focal noble"
+          is_native: "false"

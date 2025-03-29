@@ -1,5 +1,5 @@
-siphon (0.1.0) unstable; urgency=medium
+siphon (0.1.0-1~ppa1~ubuntu20.04.1) focal; urgency=medium
 
-  * Initial release.
+  * Initial release for Ubuntu PPA.
 
- -- Morgan Joyce <morganj2k@gmail.com>  Wed, 26 Mar 2025 12:00:00 +0000
+ -- Morgan Joyce <morganj2k@gmail.com>  Fri, 29 Mar 2025 02:23:00 +0000
