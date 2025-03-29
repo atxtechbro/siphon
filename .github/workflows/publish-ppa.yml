@@ -65,10 +65,13 @@ jobs:
       - name: Create tarball for PPA
         run: |
           # Create a tarball from the source code
+          mkdir -p /tmp/siphon-build/siphon-0.1.0
+          cp -r * /tmp/siphon-build/siphon-0.1.0/ 2>/dev/null || true
+          cd /tmp/siphon-build
           TARBALL_NAME="siphon_0.1.0.orig.tar.gz"
-          tar -czf $TARBALL_NAME --exclude=.git --exclude=debian --transform 's,^,siphon-0.1.0/,' .
-          mv $TARBALL_NAME ../
-          echo "Created tarball: $TARBALL_NAME"
+          tar -czf $TARBALL_NAME siphon-0.1.0 --exclude=.git --exclude=debian
+          cp $TARBALL_NAME $GITHUB_WORKSPACE/../
+          echo "Created tarball: $TARBALL_NAME at $(readlink -f $GITHUB_WORKSPACE/../$TARBALL_NAME)"
           
       - name: Publish to Launchpad PPA
         uses: yuezk/publish-ppa-package@v1
