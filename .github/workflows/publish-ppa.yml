@@ -1,14 +1,28 @@
 name: Publish to Launchpad PPA
 
 on:
+  # For production use with tags
   workflow_run:
     workflows: ["Build Debian Package"]
     types:
       - completed
+    tags:
+      - 'v*'
+  
+  # For testing the workflow on this PR branch
+  push:
+    branches:
+      - feat/launchpad-ppa-publishing
 
 jobs:
   publish-ppa:
-    if: ${{ github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'v') }}
+    # Run on successful build workflow for version tags OR on direct pushes to PR branch
+    if: |
+      (github.event_name == 'workflow_run' && 
+       github.event.workflow_run.conclusion == 'success' && 
+       startsWith(github.event.workflow_run.head_branch, 'v')) || 
+      (github.event_name == 'push' && 
+       github.ref == 'refs/heads/feat/launchpad-ppa-publishing')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -21,6 +35,11 @@ jobs:
           workflow_conclusion: success
           name: debian-package
           path: ./artifacts
+          
+      - name: List downloaded artifacts
+        run: |
+          echo "Contents of artifacts directory:"
+          ls -la ./artifacts
 
       - name: Install Dependencies
         run: |
@@ -31,12 +50,17 @@ jobs:
       - name: Build source package for PPA
         run: |
           # Build source package for PPA upload
+          # Using -us -uc for now, the action will handle signing
           debuild -S -sa -us -uc
         working-directory: .
 
       - name: List source files
         run: |
-          find ../ -name "siphon_*.changes" -type f
+          echo "Generated source files:"
+          find ../ -name "siphon_*" -type f
+          echo "Source changes file to be published:"
+          SOURCE_FILE=$(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1 || echo "NO_SOURCE_FILE_FOUND")
+          echo $SOURCE_FILE
           
       - name: Publish to Launchpad PPA
         uses: yuezk/publish-ppa-package@v1
