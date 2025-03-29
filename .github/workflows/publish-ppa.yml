@@ -1,0 +1,48 @@
+name: Publish to Launchpad PPA
+
+on:
+  workflow_run:
+    workflows: ["Build Debian Package"]
+    types:
+      - completed
+
+jobs:
+  publish-ppa:
+    if: ${{ github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'v') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          workflow_conclusion: success
+          name: debian-package
+          path: ./artifacts
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y debmake build-essential devscripts debhelper-compat dh-python python3-all
+
+      # For PPA publishing, we need source packages, not binary packages
+      - name: Build source package for PPA
+        run: |
+          # Build source package for PPA upload
+          debuild -S -sa -us -uc
+        working-directory: .
+
+      - name: List source files
+        run: |
+          find ../ -name "siphon_*.changes" -type f
+          
+      - name: Publish to Launchpad PPA
+        uses: yuezk/publish-ppa-package@v1
+        with:
+          source_file: $(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1)
+          gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
+          gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
+          ppa_repo: ppa:atxtechbro/siphon
+          ubuntu_series: jammy focal noble
