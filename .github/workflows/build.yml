@@ -1,4 +1,4 @@
-name: Publish APT Package
+name: Build Debian Package
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   #   types: [published]
 
 jobs:
-  apt:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
