@@ -1,0 +1,61 @@
+name: Test PPA Publishing
+
+on:
+  push:
+    branches:
+      - feat/simple-ppa-test
+
+jobs:
+  publish-ppa-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download latest build artifacts
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          workflow: build.yml
+          workflow_conclusion: success
+          name: debian-package
+          path: ./artifacts
+          
+      - name: List downloaded artifacts
+        run: |
+          echo "Contents of artifacts directory:"
+          ls -la ./artifacts
+          
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y debmake build-essential devscripts debhelper-compat dh-python python3-all
+
+      - name: Build source package
+        run: |
+          # Build source package for PPA upload
+          # Using -us -uc flags to skip signing for now
+          debuild -S -sa -us -uc
+        working-directory: .
+
+      - name: List source files
+        run: |
+          echo "Generated source files:"
+          find ../ -name "siphon_*" -type f
+          echo "Source changes file to be published:"
+          SOURCE_FILE=$(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1 || echo "NO_SOURCE_FILE_FOUND")
+          echo $SOURCE_FILE
+          
+      # Test the publish-ppa-package parameters but don't actually run the action yet
+      - name: Test publish-ppa-package setup
+        run: |
+          SOURCE_FILE=$(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1 || echo "NO_SOURCE_FILE_FOUND")
+          if [ "$SOURCE_FILE" != "NO_SOURCE_FILE_FOUND" ]; then
+            echo "✅ Source package ready for PPA publishing"
+            echo "Would call yuezk/publish-ppa-package with:"
+            echo "  source_file: $SOURCE_FILE"
+            echo "  ppa_repo: ppa:atxtechbro/siphon"
+            echo "  ubuntu_series: jammy focal noble"
+          else
+            echo "❌ No source package found for publishing"
+            exit 1
+          fi
