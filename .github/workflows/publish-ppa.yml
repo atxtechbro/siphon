@@ -83,9 +83,7 @@ jobs:
           repository: "atxtechbro/siphon"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-          tarball: "../siphon_0.1.0.orig.tar.gz"
-          debian_dir: "./debian"
+          pkgdir: "."
           series: "jammy"
           extra_series: "focal noble"
-          deb_email: "morganj2k@gmail.com"
-          deb_fullname: "Morgan Joyce"
+          is_native: "false"
