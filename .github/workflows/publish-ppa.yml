@@ -62,11 +62,23 @@ jobs:
           SOURCE_FILE=$(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1 || echo "NO_SOURCE_FILE_FOUND")
           echo $SOURCE_FILE
           
+      - name: Create tarball for PPA
+        run: |
+          # Create a tarball from the source code
+          TARBALL_NAME="siphon_0.1.0.orig.tar.gz"
+          tar -czf $TARBALL_NAME --exclude=.git --exclude=debian --transform 's,^,siphon-0.1.0/,' .
+          mv $TARBALL_NAME ../
+          echo "Created tarball: $TARBALL_NAME"
+          
       - name: Publish to Launchpad PPA
         uses: yuezk/publish-ppa-package@v1
         with:
-          source_file: $(find ../ -name "siphon_*.changes" -type f | grep -v "binary" | head -1)
+          repository: "atxtechbro/siphon"
           gpg_private_key: ${{ secrets.APT_GPG_PRIVATE_KEY }}
           gpg_passphrase: ${{ secrets.APT_GPG_PASSPHRASE }}
-          ppa_repo: ppa:atxtechbro/siphon
-          ubuntu_series: jammy focal noble
+          tarball: "../siphon_0.1.0.orig.tar.gz"
+          debian_dir: "./debian"
+          series: "jammy"
+          extra_series: "focal noble"
+          deb_email: "morganj2k@gmail.com"
+          deb_fullname: "Morgan Joyce"
