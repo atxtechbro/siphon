@@ -6,7 +6,7 @@ Efficiently extract, compress, and cache Git repository contexts for seamless in
   <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License"/>
   <img src="https://img.shields.io/pypi/pyversions/siphon-cli" alt="Python Versions"/>
   <img src="https://img.shields.io/pypi/v/siphon-cli" alt="PyPI"/>
-  <img src="https://github.com/atxtechbro/siphon/actions/workflows/release.yml/badge.svg" alt="Build Status"/>
+  <img src="https://github.com/atxtechbro/siphon/actions/workflows/release-and-publish.yml/badge.svg" alt="Build Status"/>
   <img src="https://codecov.io/gh/atxtechbro/siphon/branch/main/graph/badge.svg" alt="Coverage"/>
   <img src="https://img.shields.io/pypi/dm/siphon-cli" alt="Downloads"/>
   <img src="https://img.shields.io/github/issues/atxtechbro/siphon" alt="Issues"/>
