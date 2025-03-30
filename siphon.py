@@ -50,6 +50,9 @@ def parse_arguments():
     parser.add_argument(
         '--stdout', action='store_true', help='Print output to stdout'
     )
+    parser.add_argument(
+        '--estimate-tokens', action='store_true', help='Estimate token count for the extracted content'
+    )
     return parser.parse_args()
 
 def collect_tracked_files(repo):
@@ -131,8 +134,9 @@ def main():
             except Exception as e:
                 print(f"Skipping file {file}: {e}")
                 continue  # Skip unreadable files
-        token_count = estimate_tokens(collected_text, args.tokenizer)
-        print(f"Estimated tokens: {token_count}")
+        if args.estimate_tokens:
+            token_count = estimate_tokens(collected_text, args.tokenizer)
+            print(f"Estimated tokens: {token_count}")
         if args.format == 'text':
             output_path = os.path.join(temp_dir, args.output)
             with open(output_path, 'w', encoding='utf-8') as f:
