@@ -78,3 +78,37 @@ gh release create v1.0.0 --title "v1.0.0" --notes "Release notes"
 # List releases
 gh release list
 ```
+
+## Git Best Practices
+
+### Preserving Git History
+
+When renaming or modifying files, follow these practices to preserve Git history:
+
+1. **Always use `git mv` for renaming files** instead of deleting and creating new ones
+   ```bash
+   git mv old_filename.txt new_filename.txt
+   ```
+
+2. **Don't change more than 50% of a file's content in the same commit as a rename**
+   - Git's rename detection algorithm struggles to track history when content changes exceed ~50%
+   - Instead, use multiple commits:
+     ```bash
+     # First commit - just rename
+     git mv old_file.txt new_file.txt
+     git commit -m "chore: rename old_file to new_file"
+     
+     # Second commit - modify content
+     # Edit new_file.txt
+     git add new_file.txt
+     git commit -m "feat: update content in new_file"
+     ```
+
+3. **For viewing history across renames**, use:
+   ```bash
+   git log --follow filename
+   ```
+
+4. **For complex refactoring**, consider using smaller, incremental commits to help Git track changes more effectively
+
+Remember: Git's history tracking is based on content similarity. Keeping changes smaller and more focused helps maintain a clear history trail.
