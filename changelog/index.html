@@ -1,0 +1,1063 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.siphon-cli.com/changelog/">
+      
+      
+        <link rel="prev" href="../CONTRIBUTING/">
+      
+      
+        <link rel="next" href="../LICENSE/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Changelog - Siphon Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#150-2025-03-04" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Siphon Documentation" class="md-header__button md-logo" aria-label="Siphon Documentation" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Siphon Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Siphon Documentation" class="md-nav__button md-logo" aria-label="Siphon Documentation" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Siphon Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../commands/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CONTRIBUTING/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LICENSE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#bug-fixes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bug Fixes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="150-2025-03-04"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-04)</h1>
+<h3 id="bug-fixes">Bug Fixes</h3>
+<ul>
+<li><strong>apt-workflow:</strong> correct artifact upload path to match tarball name (<a href="https://github.com/atxtechbro/siphon/commit/ced227ea8a82c18b9a0f5e637faa99458fa4335d">ced227e</a>)</li>
+<li><strong>apt-workflow:</strong> Correct directory for rename operation (<a href="https://github.com/atxtechbro/siphon/commit/65757ffa239885e245285849be40d057fe5994f4">65757ff</a>)</li>
+<li><strong>apt-workflow:</strong> correct PPA publish tarball path to match created artifact (<a href="https://github.com/atxtechbro/siphon/commit/c888f875ccc4c38f24b97293db22d543fe0be989">c888f87</a>)</li>
+<li><strong>apt-workflow:</strong> Correct quoting in tar and cp commands (<a href="https://github.com/atxtechbro/siphon/commit/f610b800d99a346eceb6ecda2b55f59dbc927b5f">f610b80</a>)</li>
+<li><strong>apt-workflow:</strong> correct tarball creation to prevent file change error (<a href="https://github.com/atxtechbro/siphon/commit/ced987d0f65d16450814d00abd260f168af54780">ced987d</a>)</li>
+<li><strong>apt-workflow:</strong> ensure correct directory name for debmake (<a href="https://github.com/atxtechbro/siphon/commit/0e77b8762028ebe4c954c4cff0af9ab0876df750">0e77b87</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> ensure correct directory renaming based on tarball version (<a href="https://github.com/atxtechbro/siphon/commit/3d3bee48cb21be1b4d331c1898b54c3565411b3a">3d3bee4</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> Explicitly specify tarball path in debmake_arguments (<a href="https://github.com/atxtechbro/siphon/commit/311b2e13800bc387cfb5478c19ab98cbb67fc26f">311b2e1</a>)</li>
+<li><strong>apt-workflow:</strong> Prevent tar from archiving its own output (<a href="https://github.com/atxtechbro/siphon/commit/4a41ad315534e2d31b4aed85969c2632a28ab363">4a41ad3</a>)</li>
+<li><strong>apt-workflow:</strong> provide correct tarball name to debmake (<a href="https://github.com/atxtechbro/siphon/commit/5e059ddda36b904124b9e3eadcf5dcd72bbf1946">5e059dd</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> reintroduce Debian source tarball creation (<a href="https://github.com/atxtechbro/siphon/commit/29ab52de404ea05efccdcb555801016309954a81">29ab52d</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> Reintroduce Debian source tarball creation for debmake compatibility (<a href="https://github.com/atxtechbro/siphon/commit/9033e197e5dc20e17a022270bc79b2fa636ec63a">9033e19</a>)</li>
+<li><strong>apt-workflow:</strong> Remove redundant Debian source tarball creation (<a href="https://github.com/atxtechbro/siphon/commit/d68e30d8423e046a6041eae52103b7dae1fc1992">d68e30d</a>)</li>
+<li><strong>apt-workflow:</strong> Remove unnecessary directory renaming (<a href="https://github.com/atxtechbro/siphon/commit/8e132018c5c7d202434f1043793337361c281d7c">8e13201</a>)</li>
+<li><strong>apt-workflow:</strong> Simplify directory renaming (<a href="https://github.com/atxtechbro/siphon/commit/24da86f04f54f32a744a363e5fb692d4b695b33c">24da86f</a>)</li>
+<li><strong>apt-workflow:</strong> Update publish-ppa-package action to use forked version (<a href="https://github.com/atxtechbro/siphon/commit/c0e14040b933456ffe6b7b74b8442e740d767e7a">c0e1404</a>)</li>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Refine package dependencies and update compat level (<a href="https://github.com/atxtechbro/siphon/commit/bda76c908461da3448e35e5355930fd9b7c53c80">bda76c9</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+<li>uses:: error correction (<a href="https://github.com/atxtechbro/siphon/commit/4115dfbca9b5c40432f7b559ab7cd36d4dc7c85d">4115dfb</a>)</li>
+<li><strong>workflow:</strong> Correct debmake arguments to use single hyphens for package and version (<a href="https://github.com/atxtechbro/siphon/commit/163fba5bf2a9c0f06124a0ddeb475d891dcd2500">163fba5</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Correct tarball creation to include top-level source directory (<a href="https://github.com/atxtechbro/siphon/commit/92ed724ac6b257879859c5a2a15c676bf0bd6d38">92ed724</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Ensure artifacts dir exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/7511368cc9304650fea0657f7bcdfd143940961a">7511368</a>)</li>
+<li><strong>workflow:</strong> Ensure artifacts directory exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/57eed9569af68010429b34076e27f6c2e5ad24a0">57eed95</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Rename tarball top-level directory to "package-version" for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2a569340304fb6af98e9c30ae8405bfb04e509cf">2a56934</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Replace cp with find/cpio for tarball creation to avoid "extra operand" error (<a href="https://github.com/atxtechbro/siphon/commit/d1fdcdc7090db681c723c32b4df0433936c3af3f">d1fdcdc</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Structure tarball with debian dir inside top-level source dir (<a href="https://github.com/atxtechbro/siphon/commit/e118bc62ff3933e3b5f54f62cbb4c3fa116c5391">e118bc6</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Update APT workflow to use forked publish-ppa-package action (<a href="https://github.com/atxtechbro/siphon/commit/f7c908055ce4351e8b17ca91e67a7abd31d7fd36">f7c9080</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>apt:</strong> Add tarball artifact upload for debugging upstream issue (<a href="https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643">dda0d67</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+<li><strong>workflow:</strong> Generate original source tarball for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2619f2e875cda3dd5fb18e9c620499009c8df538">2619f2e</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Specify debmake arguments to explicitly set package name and version (<a href="https://github.com/atxtechbro/siphon/commit/5f5717f42447e1782a9f3539a74c894f3ac64ed8">5f5717f</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h1 id="150-2025-03-04_1"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-04)</h1>
+<h3 id="bug-fixes_1">Bug Fixes</h3>
+<ul>
+<li><strong>apt-workflow:</strong> correct artifact upload path to match tarball name (<a href="https://github.com/atxtechbro/siphon/commit/ced227ea8a82c18b9a0f5e637faa99458fa4335d">ced227e</a>)</li>
+<li><strong>apt-workflow:</strong> Correct directory for rename operation (<a href="https://github.com/atxtechbro/siphon/commit/65757ffa239885e245285849be40d057fe5994f4">65757ff</a>)</li>
+<li><strong>apt-workflow:</strong> correct PPA publish tarball path to match created artifact (<a href="https://github.com/atxtechbro/siphon/commit/c888f875ccc4c38f24b97293db22d543fe0be989">c888f87</a>)</li>
+<li><strong>apt-workflow:</strong> Correct quoting in tar and cp commands (<a href="https://github.com/atxtechbro/siphon/commit/f610b800d99a346eceb6ecda2b55f59dbc927b5f">f610b80</a>)</li>
+<li><strong>apt-workflow:</strong> correct tarball creation to prevent file change error (<a href="https://github.com/atxtechbro/siphon/commit/ced987d0f65d16450814d00abd260f168af54780">ced987d</a>)</li>
+<li><strong>apt-workflow:</strong> ensure correct directory name for debmake (<a href="https://github.com/atxtechbro/siphon/commit/0e77b8762028ebe4c954c4cff0af9ab0876df750">0e77b87</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> ensure correct directory renaming based on tarball version (<a href="https://github.com/atxtechbro/siphon/commit/3d3bee48cb21be1b4d331c1898b54c3565411b3a">3d3bee4</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> Prevent tar from archiving its own output (<a href="https://github.com/atxtechbro/siphon/commit/4a41ad315534e2d31b4aed85969c2632a28ab363">4a41ad3</a>)</li>
+<li><strong>apt-workflow:</strong> provide correct tarball name to debmake (<a href="https://github.com/atxtechbro/siphon/commit/5e059ddda36b904124b9e3eadcf5dcd72bbf1946">5e059dd</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> reintroduce Debian source tarball creation (<a href="https://github.com/atxtechbro/siphon/commit/29ab52de404ea05efccdcb555801016309954a81">29ab52d</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> Remove unnecessary directory renaming (<a href="https://github.com/atxtechbro/siphon/commit/8e132018c5c7d202434f1043793337361c281d7c">8e13201</a>)</li>
+<li><strong>apt-workflow:</strong> Simplify directory renaming (<a href="https://github.com/atxtechbro/siphon/commit/24da86f04f54f32a744a363e5fb692d4b695b33c">24da86f</a>)</li>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Refine package dependencies and update compat level (<a href="https://github.com/atxtechbro/siphon/commit/bda76c908461da3448e35e5355930fd9b7c53c80">bda76c9</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+<li>uses:: error correction (<a href="https://github.com/atxtechbro/siphon/commit/4115dfbca9b5c40432f7b559ab7cd36d4dc7c85d">4115dfb</a>)</li>
+<li><strong>workflow:</strong> Correct debmake arguments to use single hyphens for package and version (<a href="https://github.com/atxtechbro/siphon/commit/163fba5bf2a9c0f06124a0ddeb475d891dcd2500">163fba5</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Correct tarball creation to include top-level source directory (<a href="https://github.com/atxtechbro/siphon/commit/92ed724ac6b257879859c5a2a15c676bf0bd6d38">92ed724</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Ensure artifacts dir exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/7511368cc9304650fea0657f7bcdfd143940961a">7511368</a>)</li>
+<li><strong>workflow:</strong> Ensure artifacts directory exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/57eed9569af68010429b34076e27f6c2e5ad24a0">57eed95</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Rename tarball top-level directory to "package-version" for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2a569340304fb6af98e9c30ae8405bfb04e509cf">2a56934</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Replace cp with find/cpio for tarball creation to avoid "extra operand" error (<a href="https://github.com/atxtechbro/siphon/commit/d1fdcdc7090db681c723c32b4df0433936c3af3f">d1fdcdc</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Structure tarball with debian dir inside top-level source dir (<a href="https://github.com/atxtechbro/siphon/commit/e118bc62ff3933e3b5f54f62cbb4c3fa116c5391">e118bc6</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Update APT workflow to use forked publish-ppa-package action (<a href="https://github.com/atxtechbro/siphon/commit/f7c908055ce4351e8b17ca91e67a7abd31d7fd36">f7c9080</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h3 id="features_1">Features</h3>
+<ul>
+<li><strong>apt:</strong> Add tarball artifact upload for debugging upstream issue (<a href="https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643">dda0d67</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+<li><strong>workflow:</strong> Generate original source tarball for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2619f2e875cda3dd5fb18e9c620499009c8df538">2619f2e</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Specify debmake arguments to explicitly set package name and version (<a href="https://github.com/atxtechbro/siphon/commit/5f5717f42447e1782a9f3539a74c894f3ac64ed8">5f5717f</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h1 id="150-2025-03-04_2"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-04)</h1>
+<h3 id="bug-fixes_2">Bug Fixes</h3>
+<ul>
+<li><strong>apt-workflow:</strong> correct artifact upload path to match tarball name (<a href="https://github.com/atxtechbro/siphon/commit/ced227ea8a82c18b9a0f5e637faa99458fa4335d">ced227e</a>)</li>
+<li><strong>apt-workflow:</strong> correct PPA publish tarball path to match created artifact (<a href="https://github.com/atxtechbro/siphon/commit/c888f875ccc4c38f24b97293db22d543fe0be989">c888f87</a>)</li>
+<li><strong>apt-workflow:</strong> Correct quoting in tar and cp commands (<a href="https://github.com/atxtechbro/siphon/commit/f610b800d99a346eceb6ecda2b55f59dbc927b5f">f610b80</a>)</li>
+<li><strong>apt-workflow:</strong> correct tarball creation to prevent file change error (<a href="https://github.com/atxtechbro/siphon/commit/ced987d0f65d16450814d00abd260f168af54780">ced987d</a>)</li>
+<li><strong>apt-workflow:</strong> ensure correct directory name for debmake (<a href="https://github.com/atxtechbro/siphon/commit/0e77b8762028ebe4c954c4cff0af9ab0876df750">0e77b87</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> ensure correct directory renaming based on tarball version (<a href="https://github.com/atxtechbro/siphon/commit/3d3bee48cb21be1b4d331c1898b54c3565411b3a">3d3bee4</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> Prevent tar from archiving its own output (<a href="https://github.com/atxtechbro/siphon/commit/4a41ad315534e2d31b4aed85969c2632a28ab363">4a41ad3</a>)</li>
+<li><strong>apt-workflow:</strong> provide correct tarball name to debmake (<a href="https://github.com/atxtechbro/siphon/commit/5e059ddda36b904124b9e3eadcf5dcd72bbf1946">5e059dd</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt-workflow:</strong> reintroduce Debian source tarball creation (<a href="https://github.com/atxtechbro/siphon/commit/29ab52de404ea05efccdcb555801016309954a81">29ab52d</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+<li>uses:: error correction (<a href="https://github.com/atxtechbro/siphon/commit/4115dfbca9b5c40432f7b559ab7cd36d4dc7c85d">4115dfb</a>)</li>
+<li><strong>workflow:</strong> Correct debmake arguments to use single hyphens for package and version (<a href="https://github.com/atxtechbro/siphon/commit/163fba5bf2a9c0f06124a0ddeb475d891dcd2500">163fba5</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Correct tarball creation to include top-level source directory (<a href="https://github.com/atxtechbro/siphon/commit/92ed724ac6b257879859c5a2a15c676bf0bd6d38">92ed724</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Ensure artifacts dir exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/7511368cc9304650fea0657f7bcdfd143940961a">7511368</a>)</li>
+<li><strong>workflow:</strong> Ensure artifacts directory exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/57eed9569af68010429b34076e27f6c2e5ad24a0">57eed95</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Rename tarball top-level directory to "package-version" for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2a569340304fb6af98e9c30ae8405bfb04e509cf">2a56934</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Replace cp with find/cpio for tarball creation to avoid "extra operand" error (<a href="https://github.com/atxtechbro/siphon/commit/d1fdcdc7090db681c723c32b4df0433936c3af3f">d1fdcdc</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Structure tarball with debian dir inside top-level source dir (<a href="https://github.com/atxtechbro/siphon/commit/e118bc62ff3933e3b5f54f62cbb4c3fa116c5391">e118bc6</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Update APT workflow to use forked publish-ppa-package action (<a href="https://github.com/atxtechbro/siphon/commit/f7c908055ce4351e8b17ca91e67a7abd31d7fd36">f7c9080</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h3 id="features_2">Features</h3>
+<ul>
+<li><strong>apt:</strong> Add tarball artifact upload for debugging upstream issue (<a href="https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643">dda0d67</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+<li><strong>workflow:</strong> Generate original source tarball for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2619f2e875cda3dd5fb18e9c620499009c8df538">2619f2e</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Specify debmake arguments to explicitly set package name and version (<a href="https://github.com/atxtechbro/siphon/commit/5f5717f42447e1782a9f3539a74c894f3ac64ed8">5f5717f</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h1 id="150-2025-03-04_3"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-04)</h1>
+<h3 id="bug-fixes_3">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+<li><strong>workflow:</strong> Correct debmake arguments to use single hyphens for package and version (<a href="https://github.com/atxtechbro/siphon/commit/163fba5bf2a9c0f06124a0ddeb475d891dcd2500">163fba5</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Correct tarball creation to include top-level source directory (<a href="https://github.com/atxtechbro/siphon/commit/92ed724ac6b257879859c5a2a15c676bf0bd6d38">92ed724</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Ensure artifacts dir exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/7511368cc9304650fea0657f7bcdfd143940961a">7511368</a>)</li>
+<li><strong>workflow:</strong> Ensure artifacts directory exists before creating tarballs (<a href="https://github.com/atxtechbro/siphon/commit/57eed9569af68010429b34076e27f6c2e5ad24a0">57eed95</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Rename tarball top-level directory to "package-version" for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2a569340304fb6af98e9c30ae8405bfb04e509cf">2a56934</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Replace cp with find/cpio for tarball creation to avoid "extra operand" error (<a href="https://github.com/atxtechbro/siphon/commit/d1fdcdc7090db681c723c32b4df0433936c3af3f">d1fdcdc</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Structure tarball with debian dir inside top-level source dir (<a href="https://github.com/atxtechbro/siphon/commit/e118bc62ff3933e3b5f54f62cbb4c3fa116c5391">e118bc6</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Update APT workflow to use forked publish-ppa-package action (<a href="https://github.com/atxtechbro/siphon/commit/f7c908055ce4351e8b17ca91e67a7abd31d7fd36">f7c9080</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h3 id="features_3">Features</h3>
+<ul>
+<li><strong>apt:</strong> Add tarball artifact upload for debugging upstream issue (<a href="https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643">dda0d67</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+<li><strong>workflow:</strong> Generate original source tarball for debmake (<a href="https://github.com/atxtechbro/siphon/commit/2619f2e875cda3dd5fb18e9c620499009c8df538">2619f2e</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>workflow:</strong> Specify debmake arguments to explicitly set package name and version (<a href="https://github.com/atxtechbro/siphon/commit/5f5717f42447e1782a9f3539a74c894f3ac64ed8">5f5717f</a>), closes <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+</ul>
+<h1 id="150-2025-03-01"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-01)</h1>
+<h3 id="bug-fixes_4">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+</ul>
+<h3 id="features_4">Features</h3>
+<ul>
+<li><strong>apt:</strong> Add tarball artifact upload for debugging upstream issue (<a href="https://github.com/atxtechbro/siphon/commit/dda0d67a9119fc230ef75af6a1fbedde6c4d4643">dda0d67</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/atxtechbro/siphon/issues/8">#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a> <a href="https://github.com/yuezk/publish-ppa-package/issues/8">yuezk/publish-ppa-package#8</a></li>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+</ul>
+<h1 id="150-2025-03-01_1"><a href="https://github.com/atxtechbro/siphon/compare/v1.4.0...v1.5.0">1.5.0</a> (2025-03-01)</h1>
+<h3 id="bug-fixes_5">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> Correct file path for deb package in scp command (<a href="https://github.com/atxtechbro/siphon/commit/d1fbeb4d910ae7597e599db9bfe6e1c14d3065e6">d1fbeb4</a>)</li>
+<li><strong>apt:</strong> Correctly sign package for PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/e248888946195ee58e62036f4ff04f3b61036342">e248888</a>)</li>
+<li><strong>apt:</strong> Disable host key verification for PPA upload to resolve SSH errors (<a href="https://github.com/atxtechbro/siphon/commit/a62fa7ae63872f6f1f1c4e55511f046ac65d3069">a62fa7a</a>)</li>
+<li><strong>apt:</strong> Replace scp with rsync for more robust PPA upload (<a href="https://github.com/atxtechbro/siphon/commit/f94a2741457db21a47f8272ea75fa3d549d9a82c">f94a274</a>)</li>
+<li><strong>apt:</strong> Use dput for PPA uploads (<a href="https://github.com/atxtechbro/siphon/commit/8f3e5b7cb20b410b253ce3b9850211649da01068">8f3e5b7</a>)</li>
+<li>artifacts path and spelling typo correction (<a href="https://github.com/atxtechbro/siphon/commit/76099a48fbcca0cabf5e627c9a18adaa41a6c37e">76099a4</a>)</li>
+<li><strong>choco:</strong> Include LICENSE.txt and VERIFICATION.txt in package (<a href="https://github.com/atxtechbro/siphon/commit/c3c0b70ee7abb8d31e7a3e1cc5f9574ba0d3f26a">c3c0b70</a>)</li>
+<li><strong>debian:</strong> Define Build Steps in debian/rules File (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/c1647b7fbe48e00c28e964cddf084c9e118a3d5d">c1647b7</a>)</li>
+<li><strong>debian:</strong> Install dh-python package in GitHub Actions workflow (<a href="https://github.com/atxtechbro/siphon/commit/ee9fb39049dc8bc5a0f1f095875cfc96942c8bcb">ee9fb39</a>)</li>
+<li><strong>debian:</strong> Use pybuild for Debian builds (<a href="https://github.com/atxtechbro/siphon/issues/15">#15</a>) (<a href="https://github.com/atxtechbro/siphon/commit/50d06e5766178bed9c5aaa7e5f05689128bd979c">50d06e5</a>)</li>
+<li><strong>debug:</strong> set dput to debug mode for increased verbosity (<a href="https://github.com/atxtechbro/siphon/commit/498e3904b2e9176d8b39ba511e6b1294f2184321">498e390</a>)</li>
+<li><strong>deps:</strong> dh-python and python3-all-dev added to install debian packaging tools step (<a href="https://github.com/atxtechbro/siphon/commit/8e55e9e3761bce4b1e064cfdb20544df3ea7c86b">8e55e9e</a>)</li>
+<li>secret name prefix typo and use as secret not variable (<a href="https://github.com/atxtechbro/siphon/commit/54f5aa44b245ec100893f3e1e1bb0132d6e019b3">54f5aa4</a>)</li>
+<li>tar file changed as we read it error (<a href="https://github.com/atxtechbro/siphon/commit/227a434a7e6078cdaca175e79606c3bdd454f988">227a434</a>)</li>
+</ul>
+<h3 id="features_5">Features</h3>
+<ul>
+<li><strong>ci:</strong> Add build steps to choco-test.yml for package creation (<a href="https://github.com/atxtechbro/siphon/commit/b40ac562a2d0534d08c3a65ff031fd776b56144d">b40ac56</a>)</li>
+<li><strong>ci:</strong> Add GitHub Actions workflow for Chocolatey package testing (<a href="https://github.com/atxtechbro/siphon/commit/748f7468d0bccda272ec933803f12121235e958c">748f746</a>)</li>
+<li><strong>ci:</strong> Enhance choco-test.yml with detailed logging for debugging (<a href="https://github.com/atxtechbro/siphon/commit/ba5880a2a380801b0e4eb1ae625f9eb4de64031e">ba5880a</a>)</li>
+<li>Enhance Chocolatey install script for robustness (<a href="https://github.com/atxtechbro/siphon/commit/5cb11c5971b37bfc8ba57934c0ec69c89f0e4738">5cb11c5</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/14">#14</a></li>
+<li>try using yuezk/publish-ppa-package@v2 from github actions marketplace (<a href="https://github.com/atxtechbro/siphon/commit/87d888984bd98ca9646d1bb4eeec1c8ca53d45e7">87d8889</a>)</li>
+</ul>
+<h1 id="140-2025-02-19"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.4.0">1.4.0</a> (2025-02-19)</h1>
+<h3 id="bug-fixes_6">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> fix tab indentation in debian/rules to resolve "missing separator" error (<a href="https://github.com/atxtechbro/siphon/commit/24546c2c79f15d13198f02856a5600150a968722">24546c2</a>)</li>
+<li><strong>apt:</strong> generate debian/changelog to fix dpkg-buildpackage error (<a href="https://github.com/atxtechbro/siphon/commit/1f995906e606932379ca43d6d9232365d45cef7a">1f99590</a>)</li>
+<li><strong>apt:</strong> generate debian/control to fix dpkg-buildpackage error (<a href="https://github.com/atxtechbro/siphon/commit/cfb97bd5d9e784f2a1f3247b164d2de88c45c7a7">cfb97bd</a>)</li>
+<li><strong>apt:</strong> generate debian/rules file to resolve fakeroot error (<a href="https://github.com/atxtechbro/siphon/commit/22a0994db41745cdea1442d1d008197e06fc5646">22a0994</a>)</li>
+<li><strong>apt:</strong> install build-essential to satisfy dpkg-buildpackage dependencies (<a href="https://github.com/atxtechbro/siphon/commit/071c2c170325826a499310702016265862ad4657">071c2c1</a>)</li>
+<li><strong>apt:</strong> install python3-all to make pybuild available for packaging (<a href="https://github.com/atxtechbro/siphon/commit/86ce9b53df38995d50147c93a2dfb7626aa18e7a">86ce9b5</a>)</li>
+<li><strong>apt:</strong> install python3-pybuild to resolve pybuild not found error (<a href="https://github.com/atxtechbro/siphon/commit/690bbe455b9ae788bbf274fadd4f83e9544fe16b">690bbe4</a>)</li>
+<li><strong>apt:</strong> set GPG_TTY to prevent signing error in GitHub Actions (<a href="https://github.com/atxtechbro/siphon/commit/56650a0f84f26308722ff69a9a3a32e7840ab4c4">56650a0</a>)</li>
+<li><strong>apt:</strong> switch to pybuild for packaging to resolve deprecated dh_auto_clean error (<a href="https://github.com/atxtechbro/siphon/commit/48f0a23d59f03325f024257c718970bf1301f30e">48f0a23</a>)</li>
+<li><strong>choco:</strong> ensure siphon.exe is built before packaging (<a href="https://github.com/atxtechbro/siphon/issues/12">#12</a>) (<a href="https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7">0663266</a>)</li>
+<li><strong>ci:</strong> add checks for .nupkg file creation and specify .nuspec explicitly (<a href="https://github.com/atxtechbro/siphon/commit/62a2c1ee1f11485cec5f474c8add7d2dd4fd8558">62a2c1e</a>)</li>
+<li><strong>ci:</strong> add dh_auto_configure override to debian/rules (<a href="https://github.com/atxtechbro/siphon/commit/f04c1160c9b45a8fb1dc15e093d6f0d987e85bc0">f04c116</a>)</li>
+<li><strong>ci:</strong> correct version formatting in APT and Chocolatey workflows (<a href="https://github.com/atxtechbro/siphon/commit/173e0a4c9155234d41b292de61c1a30c0affa2ec">173e0a4</a>)</li>
+<li><strong>ci:</strong> hardcode version for APT and Chocolatey package builds due to unknown version number (<a href="https://github.com/atxtechbro/siphon/commit/9a8ccb4de701f03b543b9b757e467a21df18c0b4">9a8ccb4</a>)</li>
+<li><strong>ci:</strong> override dh_auto_clean in debian/rules to avoid python-distutils error (<a href="https://github.com/atxtechbro/siphon/commit/6f5de2119b0e3b633c4ea0e2a1b2732aebe06606">6f5de21</a>)</li>
+<li><strong>ci:</strong> remove 'v' prefix from version in Debian changelog and update package filename (<a href="https://github.com/atxtechbro/siphon/commit/b26515bb3b2c27b7a56bc7cd924eee18cee3a481">b26515b</a>)</li>
+<li><strong>ci:</strong> remove python3-pybuild from apt installation to resolve package error (<a href="https://github.com/atxtechbro/siphon/commit/d62b48e25434f3a46b728ca3dc7a0f75be5e26ce">d62b48e</a>)</li>
+<li><strong>ci:</strong> update debian/rules to use dh instead of pybuild (<a href="https://github.com/atxtechbro/siphon/commit/af83db9783b45a1cde02a19c5a55c9f26f3fee6a">af83db9</a>)</li>
+<li><strong>ci:</strong> update file search command to use PowerShell syntax for .nupkg files (<a href="https://github.com/atxtechbro/siphon/commit/d0eda5d5826da2c292ce33660811d596b91d41ad">d0eda5d</a>)</li>
+</ul>
+<h3 id="features_6">Features</h3>
+<ul>
+<li>add pyproject.toml for modern Python packaging (<a href="https://github.com/atxtechbro/siphon/commit/49d016fa2573bfa42a65556bba9938c0c1f0f225">49d016f</a>)</li>
+</ul>
+<h2 id="134-2025-02-19"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.3.4">1.3.4</a> (2025-02-19)</h2>
+<h3 id="bug-fixes_7">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> set GPG_TTY to prevent signing error in GitHub Actions (<a href="https://github.com/atxtechbro/siphon/commit/56650a0f84f26308722ff69a9a3a32e7840ab4c4">56650a0</a>)</li>
+<li><strong>choco:</strong> ensure siphon.exe is built before packaging (<a href="https://github.com/atxtechbro/siphon/issues/12">#12</a>) (<a href="https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7">0663266</a>)</li>
+</ul>
+<h2 id="134-2025-02-19_1"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.3.4">1.3.4</a> (2025-02-19)</h2>
+<h3 id="bug-fixes_8">Bug Fixes</h3>
+<ul>
+<li><strong>apt:</strong> set GPG_TTY to prevent signing error in GitHub Actions (<a href="https://github.com/atxtechbro/siphon/commit/56650a0f84f26308722ff69a9a3a32e7840ab4c4">56650a0</a>)</li>
+<li><strong>choco:</strong> ensure siphon.exe is built before packaging (<a href="https://github.com/atxtechbro/siphon/issues/12">#12</a>) (<a href="https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7">0663266</a>)</li>
+</ul>
+<h2 id="134-2025-02-19_2"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.3.4">1.3.4</a> (2025-02-19)</h2>
+<h3 id="bug-fixes_9">Bug Fixes</h3>
+<ul>
+<li><strong>choco:</strong> ensure siphon.exe is built before packaging (<a href="https://github.com/atxtechbro/siphon/issues/12">#12</a>) (<a href="https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7">0663266</a>)</li>
+</ul>
+<h2 id="134-2025-02-19_3"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.3...v1.3.4">1.3.4</a> (2025-02-19)</h2>
+<h3 id="bug-fixes_10">Bug Fixes</h3>
+<ul>
+<li><strong>choco:</strong> ensure siphon.exe is built before packaging (<a href="https://github.com/atxtechbro/siphon/issues/12">#12</a>) (<a href="https://github.com/atxtechbro/siphon/commit/066326612c2bccf08358c3ac294ef6612cedf6f7">0663266</a>)</li>
+</ul>
+<h2 id="133-2024-11-22"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.2...v1.3.3">1.3.3</a> (2024-11-22)</h2>
+<h3 id="bug-fixes_11">Bug Fixes</h3>
+<ul>
+<li><strong>version:</strong> remove extraneous quotes from VERSION file and sanitize dynamic version loading (<a href="https://github.com/atxtechbro/siphon/commit/129987c31029a92bcda0774ace4fa933b1d9b78b">129987c</a>)</li>
+</ul>
+<h2 id="132-2024-11-22"><a href="https://github.com/atxtechbro/siphon/compare/v1.3.1...v1.3.2">1.3.2</a> (2024-11-22)</h2>
+<h3 id="bug-fixes_12">Bug Fixes</h3>
+<ul>
+<li><strong>clipboard:</strong> improve emoji and Unicode compatibility across platforms (<a href="https://github.com/atxtechbro/siphon/commit/c478530f8741f5eda3c47282bae06504aff35b51">c478530</a>)</li>
+</ul>
+<h1 id="120-2024-11-22"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-11-22)</h1>
+<h3 id="bug-fixes_13">Bug Fixes</h3>
+<ul>
+<li>address contributing.md path and SEO meta descriptions (<a href="https://github.com/atxtechbro/siphon/commit/7ec3814950b4458845c9df63fc0a1ed4bf59619a">7ec3814</a>)</li>
+<li><strong>changelog:</strong> ensure front matter stays at the top of changelog.md (<a href="https://github.com/atxtechbro/siphon/commit/a303c108121a5d05b2f421c253de03dec0060b1c">a303c10</a>)</li>
+<li><strong>ci:</strong> add write permissions to gh-pages workflow for GitHub Pages deployment (<a href="https://github.com/atxtechbro/siphon/commit/fba9b5b1e952bb96c1419025a037d3c90bfd4281">fba9b5b</a>)</li>
+<li><strong>clipboard:</strong> ensure UTF-8 encoding for Windows clipboard support (<a href="https://github.com/atxtechbro/siphon/commit/9847c30045a556e0bf95d428f97726c549314b0c">9847c30</a>)</li>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li><strong>deployment:</strong> preserve CNAME for custom domain during deployment (<a href="https://github.com/atxtechbro/siphon/commit/de228a914b2ccabb9d94372b42d38d85e1270f5d">de228a9</a>)</li>
+<li><strong>deployment:</strong> simplify CNAME handling by using cname field in GitHub Pages action (<a href="https://github.com/atxtechbro/siphon/commit/3f45c8faf71b6c6bdfbba071d791f47c0c33b59a">3f45c8f</a>)</li>
+<li><strong>docs:</strong> hard-code MIT License in LICENSE.md and fix SEO issues (<a href="https://github.com/atxtechbro/siphon/commit/8e99990ad7714af3774d1b4219187f84d8c13175">8e99990</a>)</li>
+<li><strong>docs:</strong> update license file reference to LICENSE.md after testing locally (<a href="https://github.com/atxtechbro/siphon/commit/53b4453a42d3e823c600ab18ad78bd2464ee0bbe">53b4453</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> add pycryptodome to resolve pycrypto installation issue (<a href="https://github.com/atxtechbro/siphon/commit/3b656ab9281630cc6577f09a19eacb7b08312407">3b656ab</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_7">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<h1 id="120-2024-11-21"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-11-21)</h1>
+<h3 id="bug-fixes_14">Bug Fixes</h3>
+<ul>
+<li>address contributing.md path and SEO meta descriptions (<a href="https://github.com/atxtechbro/siphon/commit/7ec3814950b4458845c9df63fc0a1ed4bf59619a">7ec3814</a>)</li>
+<li><strong>changelog:</strong> ensure front matter stays at the top of changelog.md (<a href="https://github.com/atxtechbro/siphon/commit/a303c108121a5d05b2f421c253de03dec0060b1c">a303c10</a>)</li>
+<li><strong>ci:</strong> add write permissions to gh-pages workflow for GitHub Pages deployment (<a href="https://github.com/atxtechbro/siphon/commit/fba9b5b1e952bb96c1419025a037d3c90bfd4281">fba9b5b</a>)</li>
+<li><strong>clipboard:</strong> ensure UTF-8 encoding for Windows clipboard support (<a href="https://github.com/atxtechbro/siphon/commit/9847c30045a556e0bf95d428f97726c549314b0c">9847c30</a>)</li>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li><strong>deployment:</strong> preserve CNAME for custom domain during deployment (<a href="https://github.com/atxtechbro/siphon/commit/de228a914b2ccabb9d94372b42d38d85e1270f5d">de228a9</a>)</li>
+<li><strong>deployment:</strong> simplify CNAME handling by using cname field in GitHub Pages action (<a href="https://github.com/atxtechbro/siphon/commit/3f45c8faf71b6c6bdfbba071d791f47c0c33b59a">3f45c8f</a>)</li>
+<li><strong>docs:</strong> hard-code MIT License in LICENSE.md and fix SEO issues (<a href="https://github.com/atxtechbro/siphon/commit/8e99990ad7714af3774d1b4219187f84d8c13175">8e99990</a>)</li>
+<li><strong>docs:</strong> update license file reference to LICENSE.md after testing locally (<a href="https://github.com/atxtechbro/siphon/commit/53b4453a42d3e823c600ab18ad78bd2464ee0bbe">53b4453</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> add pycryptodome to resolve pycrypto installation issue (<a href="https://github.com/atxtechbro/siphon/commit/3b656ab9281630cc6577f09a19eacb7b08312407">3b656ab</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_8">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<h1 id="120-2024-11-21_1"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-11-21)</h1>
+<h3 id="bug-fixes_15">Bug Fixes</h3>
+<ul>
+<li>address contributing.md path and SEO meta descriptions (<a href="https://github.com/atxtechbro/siphon/commit/7ec3814950b4458845c9df63fc0a1ed4bf59619a">7ec3814</a>)</li>
+<li><strong>changelog:</strong> ensure front matter stays at the top of changelog.md (<a href="https://github.com/atxtechbro/siphon/commit/a303c108121a5d05b2f421c253de03dec0060b1c">a303c10</a>)</li>
+<li><strong>ci:</strong> add write permissions to gh-pages workflow for GitHub Pages deployment (<a href="https://github.com/atxtechbro/siphon/commit/fba9b5b1e952bb96c1419025a037d3c90bfd4281">fba9b5b</a>)</li>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li><strong>deployment:</strong> preserve CNAME for custom domain during deployment (<a href="https://github.com/atxtechbro/siphon/commit/de228a914b2ccabb9d94372b42d38d85e1270f5d">de228a9</a>)</li>
+<li><strong>deployment:</strong> simplify CNAME handling by using cname field in GitHub Pages action (<a href="https://github.com/atxtechbro/siphon/commit/3f45c8faf71b6c6bdfbba071d791f47c0c33b59a">3f45c8f</a>)</li>
+<li><strong>docs:</strong> hard-code MIT License in LICENSE.md and fix SEO issues (<a href="https://github.com/atxtechbro/siphon/commit/8e99990ad7714af3774d1b4219187f84d8c13175">8e99990</a>)</li>
+<li><strong>docs:</strong> update license file reference to LICENSE.md after testing locally (<a href="https://github.com/atxtechbro/siphon/commit/53b4453a42d3e823c600ab18ad78bd2464ee0bbe">53b4453</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> add pycryptodome to resolve pycrypto installation issue (<a href="https://github.com/atxtechbro/siphon/commit/3b656ab9281630cc6577f09a19eacb7b08312407">3b656ab</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_9">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<h1 id="120-2024-10-12"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-10-12)</h1>
+<h3 id="bug-fixes_16">Bug Fixes</h3>
+<ul>
+<li>address contributing.md path and SEO meta descriptions (<a href="https://github.com/atxtechbro/siphon/commit/7ec3814950b4458845c9df63fc0a1ed4bf59619a">7ec3814</a>)</li>
+<li><strong>changelog:</strong> ensure front matter stays at the top of changelog.md (<a href="https://github.com/atxtechbro/siphon/commit/a303c108121a5d05b2f421c253de03dec0060b1c">a303c10</a>)</li>
+<li><strong>ci:</strong> add write permissions to gh-pages workflow for GitHub Pages deployment (<a href="https://github.com/atxtechbro/siphon/commit/fba9b5b1e952bb96c1419025a037d3c90bfd4281">fba9b5b</a>)</li>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li><strong>deployment:</strong> preserve CNAME for custom domain during deployment (<a href="https://github.com/atxtechbro/siphon/commit/de228a914b2ccabb9d94372b42d38d85e1270f5d">de228a9</a>)</li>
+<li><strong>deployment:</strong> simplify CNAME handling by using cname field in GitHub Pages action (<a href="https://github.com/atxtechbro/siphon/commit/3f45c8faf71b6c6bdfbba071d791f47c0c33b59a">3f45c8f</a>)</li>
+<li><strong>docs:</strong> hard-code MIT License in LICENSE.md and fix SEO issues (<a href="https://github.com/atxtechbro/siphon/commit/8e99990ad7714af3774d1b4219187f84d8c13175">8e99990</a>)</li>
+<li><strong>docs:</strong> update license file reference to LICENSE.md after testing locally (<a href="https://github.com/atxtechbro/siphon/commit/53b4453a42d3e823c600ab18ad78bd2464ee0bbe">53b4453</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> add pycryptodome to resolve pycrypto installation issue (<a href="https://github.com/atxtechbro/siphon/commit/3b656ab9281630cc6577f09a19eacb7b08312407">3b656ab</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_10">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<h1 id="120-2024-09-18"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-09-18)</h1>
+<h3 id="bug-fixes_17">Bug Fixes</h3>
+<ul>
+<li>address contributing.md path and SEO meta descriptions (<a href="https://github.com/atxtechbro/siphon/commit/7ec3814950b4458845c9df63fc0a1ed4bf59619a">7ec3814</a>)</li>
+<li><strong>changelog:</strong> ensure front matter stays at the top of changelog.md (<a href="https://github.com/atxtechbro/siphon/commit/a303c108121a5d05b2f421c253de03dec0060b1c">a303c10</a>)</li>
+<li><strong>ci:</strong> add write permissions to gh-pages workflow for GitHub Pages deployment (<a href="https://github.com/atxtechbro/siphon/commit/fba9b5b1e952bb96c1419025a037d3c90bfd4281">fba9b5b</a>)</li>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li><strong>deployment:</strong> preserve CNAME for custom domain during deployment (<a href="https://github.com/atxtechbro/siphon/commit/de228a914b2ccabb9d94372b42d38d85e1270f5d">de228a9</a>)</li>
+<li><strong>deployment:</strong> simplify CNAME handling by using cname field in GitHub Pages action (<a href="https://github.com/atxtechbro/siphon/commit/3f45c8faf71b6c6bdfbba071d791f47c0c33b59a">3f45c8f</a>)</li>
+<li><strong>docs:</strong> hard-code MIT License in LICENSE.md and fix SEO issues (<a href="https://github.com/atxtechbro/siphon/commit/8e99990ad7714af3774d1b4219187f84d8c13175">8e99990</a>)</li>
+<li><strong>docs:</strong> update license file reference to LICENSE.md after testing locally (<a href="https://github.com/atxtechbro/siphon/commit/53b4453a42d3e823c600ab18ad78bd2464ee0bbe">53b4453</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> add pycryptodome to resolve pycrypto installation issue (<a href="https://github.com/atxtechbro/siphon/commit/3b656ab9281630cc6577f09a19eacb7b08312407">3b656ab</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_11">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<h1 id="120-2024-09-16"><a href="https://github.com/atxtechbro/siphon/compare/v1.1.0...v1.2.0">1.2.0</a> (2024-09-16)</h1>
+<h3 id="bug-fixes_18">Bug Fixes</h3>
+<ul>
+<li>deploy documentation to main branch instead of gh-pages (<a href="https://github.com/atxtechbro/siphon/commit/625ecf61fa0c8c4e89bbfc422b659706a2f542b2">625ecf6</a>)</li>
+<li><strong>deploy:</strong> change deploy branch to 'gh-pages' and enable orphan commits (<a href="https://github.com/atxtechbro/siphon/commit/456d6502f0322302ddea1b53c21ba125e37b6221">456d650</a>)</li>
+<li>include image assets in deployment (<a href="https://github.com/atxtechbro/siphon/commit/1ac0e5f76d69edbb667bda5f4b57f5ff4f546709">1ac0e5f</a>)</li>
+<li>install missing mkdocs-meta-descriptions plugin and clean up cname comment (<a href="https://github.com/atxtechbro/siphon/commit/b534518cef4b449ad8c7bc997015b1dc877c750b">b534518</a>)</li>
+<li>move favicon.ico to docs directory for favicon loading experiment (<a href="https://github.com/atxtechbro/siphon/commit/2b5726c64c2790a88754a829e3ed5ad01b608bbd">2b5726c</a>)</li>
+<li>update deploy workflow to deploy documentation changes (<a href="https://github.com/atxtechbro/siphon/commit/c110fe5b6a9fe21f119b4dfa3a34adec3935004e">c110fe5</a>)</li>
+<li>update paths for logo and favicon in mkdocs.yml (<a href="https://github.com/atxtechbro/siphon/commit/6380fad97073fa7506d2ba7bf455ea4f51c63091">6380fad</a>)</li>
+<li><strong>workflow:</strong> trigger deploy on all pushes to main by removing path filters (<a href="https://github.com/atxtechbro/siphon/commit/764d5e21e26059dbd099d332c63988b60ecb5c35">764d5e2</a>)</li>
+</ul>
+<h3 id="features_12">Features</h3>
+<ul>
+<li><strong>#4:</strong> Add CI/CD Workflow for Documentation Deployment and Initial MkDocs Setup (<a href="https://github.com/atxtechbro/siphon/commit/38880b1affdb560c34981ca322962cae53c70359">38880b1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a> <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li>add deployment step to GitHub Pages in deploy.yml (<a href="https://github.com/atxtechbro/siphon/commit/239f62267d61005e74f11aca234bbacf2a8e8e28">239f622</a>)</li>
+<li>add favicon and logo images for branding (<a href="https://github.com/atxtechbro/siphon/commit/fff372742002eaec7166c152c8d3bfd57f9898e5">fff3727</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/5">#5</a></li>
+<li><strong>docs:</strong> initialize documentation structure for Siphon website (<a href="https://github.com/atxtechbro/siphon/commit/7648cc12316dd7c93329ab4de14e3bd7d4d1a55f">7648cc1</a>), closes <a href="https://github.com/atxtechbro/siphon/issues/4">#4</a></li>
+<li><strong>images:</strong> add favicon.ico and logo.png (<a href="https://github.com/atxtechbro/siphon/commit/bb47d109ab71aec9d8545fca05a6d919714cf11c">bb47d10</a>)</li>
+<li>trigger semantic release to update changelog (<a href="https://github.com/atxtechbro/siphon/commit/c526227022208c942c2879c53645460aec3b2260">c526227</a>)</li>
+<li>update semantic-release config to move changelog to docs directory (<a href="https://github.com/atxtechbro/siphon/commit/1a5d16c4a889e15c033e5142c1128a70894a3ce7">1a5d16c</a>)</li>
+<li><strong>workflow:</strong> add manual trigger using workflow_dispatch (<a href="https://github.com/atxtechbro/siphon/commit/59550923ab402050aaa14de68a79a116e7579578">5955092</a>)</li>
+</ul>
+<hr />
+<p>title: "Changelog"
+description: "Record of all notable changes to Siphon."</p>
+<hr />
+<h1 id="changelog">Changelog</h1>
+<p><a href="./">Full Changelog</a></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/atxtechbro/siphon" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
