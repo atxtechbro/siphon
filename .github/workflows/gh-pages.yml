@@ -1,4 +1,4 @@
-name: Deploy MkDocs Site to GitHub Pages
+name: Deploy GitHub Pages
 
 on:
   workflow_dispatch:
@@ -10,34 +10,46 @@ on:
       - 'mkdocs.yml'
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-
+      contents: read
+      pages: write
+      id-token: write
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - name: Checkout the code
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: true
-
-      - name: Set up Python
+      
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.x"
-
-      - name: Install MkDocs and dependencies
+          python-version: '3.x'
+      
+      - name: Install dependencies
         run: |
           pip install mkdocs mkdocs-material mkdocs-meta-descriptions-plugin
-
-      - name: Build the MkDocs site
+      
+      - name: Build site
         run: mkdocs build --clean --verbose
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site # Directory where MkDocs builds the static files
+          path: './site'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
           cname: docs.siphon-cli.com
-          force_orphan: true
