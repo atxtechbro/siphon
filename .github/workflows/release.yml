@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install build twine wheel setuptools
+          pip install build wheel setuptools
           pip install -e .
 
       # Build Python package
@@ -34,13 +34,6 @@ jobs:
 
       - name: Build Linux executable
         run: pyinstaller --onefile siphon.py --name siphon-linux
-
-      # Upload to PyPI
-      - name: Publish to PyPI
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
 
       # Create GitHub Release
       - name: Create Release
@@ -56,4 +49,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Add Windows and macOS builds in the future if needed
-      # This simplified workflow focuses on Linux builds and PyPI distribution
+      # This simplified workflow focuses on Linux builds and GitHub releases
